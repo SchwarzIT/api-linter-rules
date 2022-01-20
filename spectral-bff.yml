@@ -1,5 +1,5 @@
 extends:
-  - https://github.com/SchwarzIT/api-linter-rules/blob/spectral_base_ruleset/spectral.yml
+  - https://github.com/SchwarzIT/api-linter-rules/blob/main/spectral.yml
 rules:
   operation-tag-defined: off
   path-must-match-api-standards: info
