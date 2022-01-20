@@ -1,4 +1,4 @@
-git aextends: [[spectral:oas, recommended]]
+extends: [[spectral:oas, recommended]]
 rules:
   operation-tag-defined: off
 
