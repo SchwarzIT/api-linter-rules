@@ -8,3 +8,4 @@ rules:
   http-verbs-should-be-used: warn
   no-http-verbs-in-resources: warn
   description-is-mandatory: warn
+  must-have-path: error

@@ -75,3 +75,15 @@ rules:
     then:
       - field: description
         function: truthy
+
+  ## checks that the api has at least one path
+  must-have-path:
+    description: Every API must have at least one path
+    message: "{{description}}; property `paths` is empty"
+    severity: error
+    given: $
+    then:
+      - field: paths
+        function: length
+        functionOptions:
+          min: 1
