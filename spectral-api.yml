@@ -10,3 +10,4 @@ rules:
   description-is-mandatory: warn
   info-description: error
   contact-information: error
+  path-description: error
