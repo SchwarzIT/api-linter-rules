@@ -2,11 +2,11 @@ extends:
   - https://raw.githubusercontent.com/SchwarzIT/api-linter-rules/main/spectral.yml
 rules:
   operation-tag-defined: off
-  path-must-match-api-standards: info
-  servers-must-match-api-standards: info
-  common-responses-unauthorized: info
-  http-verbs-should-be-used: info
-  no-http-verbs-in-resources: info
-  description-is-mandatory: info
-  must-have-path: warn
-  must-have-response-body: warn
+  path-must-match-api-standards: hint
+  servers-must-match-api-standards: hint
+  common-responses-unauthorized: hint
+  http-verbs-should-be-used: hint
+  no-http-verbs-in-resources: hint
+  description-is-mandatory: hint
+  must-have-path: hint
+  must-have-response-body: hint
