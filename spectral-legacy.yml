@@ -11,3 +11,4 @@ rules:
   info-description: warn
   contact-information: warn
   path-description: warn
+  path-dto-reference: warn

@@ -11,3 +11,4 @@ rules:
   info-description: error
   contact-information: error
   path-description: error
+  path-dto-reference: error
