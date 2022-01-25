@@ -9,3 +9,4 @@ rules:
   no-http-verbs-in-resources: info
   description-is-mandatory: info
   must-have-path: error
+  must-have-response-body: error
