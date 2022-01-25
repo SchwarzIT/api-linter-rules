@@ -8,7 +8,7 @@ rules:
   http-verbs-should-be-used: warn
   no-http-verbs-in-resources: warn
   description-is-mandatory: warn
-  info-description: error
-  contact-information: error
-  path-description: error
-  path-dto-reference: error
+  info-description: warn
+  contact-information: warn
+  path-description: warn
+  path-dto-reference: warn
