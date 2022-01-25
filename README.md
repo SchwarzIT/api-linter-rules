@@ -24,8 +24,15 @@ rules:
 ***
 
 ## Base ruleset
+
 * Base ruleset is defined in [spectral.yml](./spectral.yml)
+* Extends from spectral:oas [recommended rules](https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules)
+
+```yml
+extends: [[spectral:oas, recommended]]
+```
 ## Supported API Types
+
 * Product API ruleset is defined in [spectral-api.yml](./spectral-api.yaml)
 * Backend For Frontend is defined in [spectral-bff.yml](./spectral-bff.yaml)
 * Legacy API is defined in [spectral-legacy.yml](./spectral-legacy.yaml)
