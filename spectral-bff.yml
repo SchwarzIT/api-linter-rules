@@ -12,3 +12,4 @@ rules:
   must-have-response-body: info
   must-have-content-type: info
   must-define-example-schema: info
+  path-must-specify-tags: info

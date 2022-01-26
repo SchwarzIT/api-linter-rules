@@ -12,3 +12,4 @@ rules:
   must-have-response-body: warn
   must-have-content-type: warn
   must-define-example-schema: warn
+  path-must-specify-tags: warn

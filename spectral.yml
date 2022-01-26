@@ -121,3 +121,14 @@ rules:
           properties:
             - example
             - examples
+
+  path-must-specify-tags:
+    description: Every route should specify at least one tag it belongs to
+    message: "{{description}}; property tags is missing at: {{path}}"
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))].*
+    then:
+      - field: tags
+        function: length
+        functionOptions:
+          min: 1
