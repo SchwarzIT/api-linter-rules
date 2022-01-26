@@ -48,7 +48,7 @@ extends: [[spectral:oas, recommended]]
 
 ```yaml
 extends:
-- https://raw.githubusercontent.com/SchwarzIT/api-linter-rules/main/spectral-api.yml
+- https://raw.githubusercontent.com/SchwarzIT/api-linter-rules/main/spectral-{API_TYPE}.yml
 ````
 
 2. Adapt VS Code settings in .vscode/settings.json
@@ -59,6 +59,9 @@ extends:
     "**/openapi/**/*.json",
 ],
 ```
+3. Place your open api spec in a folder called "openapi"
+
+4. Enjoy API Linting
 
 ### IntelliJ
 
