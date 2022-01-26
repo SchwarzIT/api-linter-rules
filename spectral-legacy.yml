@@ -10,3 +10,4 @@ rules:
   description-is-mandatory: hint
   must-have-path: hint
   must-have-response-body: hint
+  must-have-content-type: hint

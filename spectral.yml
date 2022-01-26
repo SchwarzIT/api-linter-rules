@@ -90,7 +90,7 @@ rules:
 
   must-have-response-body:
     description: Every route returning a http status code of 200 or 201 should have a response body defined
-    message: "{{description}}; property {{property}} is missing at path {{path}}"
+    message: "{{description}}; property {{property}} is missing at path: {{path}}"
     severity: error
     given: $.paths[?(!@property.match(/well-known/ig))]..responses[200,201]
     then:
@@ -98,3 +98,14 @@ rules:
         function: truthy
       - field: description
         function: truthy
+
+  must-have-content-type:
+    description: Every response should specify its content type
+    message: "{{description}}; property {{property}} is missing or not a valid content-type"
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))]..content
+    then:
+      - field: "@key"
+        function: pattern
+        functionOptions:
+          match: "/"
