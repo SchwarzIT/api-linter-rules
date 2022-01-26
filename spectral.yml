@@ -102,15 +102,6 @@ rules:
       - field: url
         function: truthy
 
-  path-description:
-    description: Each path of an API must have a description
-    message: "{{description}}; property `description` is missing for path {{path}}"
-    severity: error
-    given: $.paths[?(!@property.match(/well-known/ig))]
-    then:
-      - field: description
-        function: truthy
-
   path-dto-reference:
     description: DTOs should be used to specify the schema of a request / response
     message: "{{description}}; property {{property}} is missing"
