@@ -8,3 +8,7 @@ rules:
   http-verbs-should-be-used: info
   no-http-verbs-in-resources: info
   description-is-mandatory: info
+  info-description: info
+  contact-information: info
+  path-description: info
+  path-dto-reference: info

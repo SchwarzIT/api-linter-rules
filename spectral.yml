@@ -75,3 +75,48 @@ rules:
     then:
       - field: description
         function: truthy
+
+  info-description:
+    description: Every API must have a global description
+    message: "OpenAPI object info `description` must be present and at least 100 chars long."
+    severity: error
+    given: $.info
+    then:
+      - field: description
+        function: truthy
+      - field: description
+        function: length
+        functionOptions:
+          min: 100
+
+  contact-information:
+    description: Every API must have a contact containing name, email and a url
+    message: "{{description}}; property {{property}} is missing"
+    severity: error
+    given: $.info.contact
+    then:
+      - field: name
+        function: truthy
+      - field: email
+        function: truthy
+      - field: url
+        function: truthy
+
+  path-description:
+    description: Each path of an API must have a description
+    message: "{{description}}; property `description` is missing for path {{path}}"
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))]
+    then:
+      - field: description
+        function: truthy
+
+  path-dto-reference:
+    description: DTOs should be used to specify the schema of a request / response
+    message: "{{description}}; property {{property}} is missing"
+    severity: error
+    given: $.components.schemas
+    then:
+      - function: length
+        functionOptions:
+          min: 1
