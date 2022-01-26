@@ -109,3 +109,15 @@ rules:
         function: pattern
         functionOptions:
           match: "/"
+
+  must-define-example-schema:
+    description: Every DTO should define at least one example
+    message: "{{description}}; DTO is lacking an example {{path}}"
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))]..content.*
+    then:
+      - function: xor
+        functionOptions:
+          properties:
+            - example
+            - examples

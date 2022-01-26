@@ -11,3 +11,4 @@ rules:
   must-have-path: hint
   must-have-response-body: hint
   must-have-content-type: hint
+  must-define-example-schema: hint

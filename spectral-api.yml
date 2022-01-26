@@ -11,3 +11,4 @@ rules:
   must-have-path: warn
   must-have-response-body: warn
   must-have-content-type: warn
+  must-define-example-schema: warn
