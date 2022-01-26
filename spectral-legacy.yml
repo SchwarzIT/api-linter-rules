@@ -12,3 +12,8 @@ rules:
   contact-information: hint
   path-description: hint
   path-dto-reference: hint
+  must-have-path: hint
+  must-have-response-body: hint
+  must-have-content-type: hint
+  must-define-example-schema: hint
+  path-must-specify-tags: hint

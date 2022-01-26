@@ -120,3 +120,60 @@ rules:
       - function: length
         functionOptions:
           min: 1
+
+  ## checks that the api has at least one path
+  must-have-path:
+    description: Every API must have at least one path
+    message: "{{description}}; property `paths` is empty"
+    severity: error
+    given: $
+    then:
+      - field: paths
+        function: length
+        functionOptions:
+          min: 1
+
+  must-have-response-body:
+    description: Every route returning a http status code of 200 or 201 should have a response body defined
+    message: "{{description}}; property {{property}} is missing at path: {{path}}"
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))]..responses[200,201]
+    then:
+      - field: content
+        function: truthy
+      - field: description
+        function: truthy
+
+  must-have-content-type:
+    description: Every response should specify its content type
+    message: "{{description}}; property {{property}} is missing or not a valid content-type"
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))]..content
+    then:
+      - field: "@key"
+        function: pattern
+        functionOptions:
+          match: "/"
+
+  must-define-example-schema:
+    description: Every DTO should define at least one example
+    message: "{{description}}; DTO is lacking an example {{path}}"
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))]..content.*
+    then:
+      - function: xor
+        functionOptions:
+          properties:
+            - example
+            - examples
+
+  path-must-specify-tags:
+    description: Every route should specify at least one tag it belongs to
+    message: "{{description}}; property tags is missing at: {{path}}"
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))].*
+    then:
+      - field: tags
+        function: length
+        functionOptions:
+          min: 1
