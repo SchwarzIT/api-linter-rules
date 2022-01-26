@@ -2,8 +2,8 @@ extends:
   - https://raw.githubusercontent.com/SchwarzIT/api-linter-rules/main/spectral.yml
 rules:
   operation-tag-defined: off
-  path-must-match-api-standards: info
-  servers-must-match-api-standards: info
+  path-must-match-api-standards: off # Rule is still under discussion and therefore disabled
+  servers-must-match-api-standards: off # Rule is still under discussion and therefore disabled
   common-responses-unauthorized: info
   http-verbs-should-be-used: info
   no-http-verbs-in-resources: info
