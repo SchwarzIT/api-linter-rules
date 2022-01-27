@@ -10,7 +10,6 @@ rules:
   description-is-mandatory: warn
   info-description: warn
   contact-information: warn
-  path-description: warn
   path-dto-reference: warn
   must-have-path: warn
   must-have-response-body: warn

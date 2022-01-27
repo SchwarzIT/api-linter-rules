@@ -10,7 +10,6 @@ rules:
   description-is-mandatory: hint
   info-description: hint
   contact-information: hint
-  path-description: hint
   path-dto-reference: hint
   must-have-path: hint
   must-have-response-body: hint
