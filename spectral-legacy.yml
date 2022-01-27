@@ -7,7 +7,7 @@ rules:
   common-responses-unauthorized: hint
   http-verbs-should-be-used: hint
   no-http-verbs-in-resources: hint
-  description-is-mandatory: hint
+  path-description-is-mandatory: hint
   info-description: hint
   contact-information: hint
   path-dto-reference: hint

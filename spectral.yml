@@ -67,7 +67,7 @@ rules:
         notMatch: "\/(get|post|put|patch|delete)(\/|$)"
 
   ## checks that every route has a description, the description of every http verb is mandatory by spectral already ##
-  description-is-mandatory:
+  path-description-is-mandatory:
     description: Every route of an API should have a description
     message: "{{description}}; property: {{property}} is missing"
     severity: error
