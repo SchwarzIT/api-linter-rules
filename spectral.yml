@@ -7,7 +7,7 @@ rules:
 
   ## check provided paths ##
   path-must-match-api-standards:
-    description: API Path must match company api uri standards
+    description: API Path must match company API uri standards
     message: "{{description}}; {{property}} incorrect. Example: /digital-twin/api/v1/products"
     severity: error
     resolved: false
@@ -17,9 +17,9 @@ rules:
       functionOptions:
         match: ^\/([a-z-]+)\/api\/(v[1-9])\/([a-z]+(\w+s\b.*))
 
-  ## check provided server urls ##
+  ## check provided schema and host in URL ##
   servers-must-match-api-standards:
-    description: Servers must match company api standards
+    description: Schema and host in URL must match company API standards
     message: "{{description}}; {{property}}:{{value}} incorrect. Example: https://live.api.schwarz/digital-twin/api/v1/products"
     severity: error
     resolved: false
@@ -28,8 +28,6 @@ rules:
       function: pattern
       functionOptions:
         match: "^((http[s]?):\/\/)([a-z]+)([.+])api.schwarz"
-
-
 
   # Documentation Rules
 
@@ -60,7 +58,7 @@ rules:
         function: truthy
 
   path-dto-reference:
-    description: DTOs should be used to specify the schema of a request / response
+    description: DTOs should be used to specify the schema(data types) of a request / response
     message: "{{description}}; property {{property}} is missing"
     severity: error
     given: $.components.schemas
@@ -69,7 +67,7 @@ rules:
         functionOptions:
           min: 1
 
-  ## checks that the api has at least one path
+  ## checks that API has at least one path
   must-have-path:
     description: Every API must have at least one path
     message: "{{description}}; property `paths` is empty"
@@ -81,11 +79,9 @@ rules:
         functionOptions:
           min: 1
 
-
-
   # Endpoint Rules
 
-  ## check 401 response implemented ##
+  ## check that 401 response is implemented ##
   common-responses-unauthorized:
     description: Responses should contain common response - 401 (unauthorized)
     message: "{{description}}. Missing {{property}}"
@@ -115,7 +111,7 @@ rules:
 
   ## checks that the http verbs are not used as part of the route path ##
   no-http-verbs-in-resources:
-    description: The HTTP URL should not be used to define different actions on a resource
+    description: The HTTP Verbs should not be used in the route path to define different actions on a resource
     message: "{{description}}; {{property}} Instead use HTTP verbs to define actions on a resource. Example: PUT - /digital-twin/api/v1/products/42"
     severity: error
     given: $.paths[?(!@property.match(/well-known/ig))]~
@@ -124,7 +120,7 @@ rules:
       functionOptions:
         notMatch: "\/(get|post|put|patch|delete)(\/|$)"
 
-  ## checks that every route has a description, the description of every http verb is mandatory by spectral already ##
+  ## checks that every route has a description. The description of every http verb is mandatory by spectral already ##
   path-description-is-mandatory:
     description: Every route of an API should have a description
     message: "{{description}}; property: {{property}} is missing"
@@ -135,7 +131,7 @@ rules:
         function: truthy
 
   must-have-response-body:
-    description: Every route returning a http status code of 200 or 201 should have a response body defined
+    description: Every route returning a http status code of 200 or 201 must have a response body defined
     message: "{{description}}; property {{property}} is missing at path: {{path}}"
     severity: error
     given: $.paths[?(!@property.match(/well-known/ig))]..responses[200,201]
@@ -146,7 +142,7 @@ rules:
         function: truthy
 
   must-have-content-type:
-    description: Every response should specify its content type
+    description: Every response must specify its content type
     message: "{{description}}; property {{property}} is missing or not a valid content-type"
     severity: error
     given: $.paths[?(!@property.match(/well-known/ig))]..content
@@ -157,7 +153,7 @@ rules:
           match: "/"
 
   must-define-example-schema:
-    description: Every DTO should define at least one example
+    description: Every DTO must define at least one example
     message: "{{description}}; DTO is lacking an example {{path}}"
     severity: error
     given: $.paths[?(!@property.match(/well-known/ig))]..content.*
@@ -169,7 +165,7 @@ rules:
             - examples
 
   path-must-specify-tags:
-    description: Every route should specify at least one tag it belongs to
+    description: Every route must specify at least one tag it belongs to
     message: "{{description}}; property tags is missing at: {{path}}"
     severity: error
     given: $.paths[?(!@property.match(/well-known/ig))].*
