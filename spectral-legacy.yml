@@ -4,15 +4,15 @@ rules:
   operation-tag-defined: off
   path-must-match-api-standards: off # Rule is still under discussion and therefore disabled
   servers-must-match-api-standards: off # Rule is still under discussion and therefore disabled
-  common-responses-unauthorized: hint
-  http-verbs-should-be-used: hint
-  no-http-verbs-in-resources: hint
-  path-description-is-mandatory: hint
-  info-description: hint
-  contact-information: hint
-  path-dto-reference: hint
-  must-have-path: hint
-  must-have-response-body: hint
-  must-have-content-type: hint
-  must-define-example-schema: hint
-  path-must-specify-tags: hint
+  common-responses-unauthorized: info
+  http-verbs-should-be-used: info
+  no-http-verbs-in-resources: info
+  path-description-is-mandatory: info
+  info-description: info
+  contact-information: info
+  path-dto-reference: info
+  must-have-path: info
+  must-have-response-body: info
+  must-have-content-type: info
+  must-define-example-schema: info
+  path-must-specify-tags: info
