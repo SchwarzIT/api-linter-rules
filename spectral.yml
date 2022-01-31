@@ -1,21 +1,12 @@
-extends: [[spectral:oas, recommended]]
+extends:
+  - [spectral:oas, recommended]
+  - rules/general/path-must-match-api-standards.yml
+
 rules:
 
   # General Rules
 
   operation-tag-defined: off
-
-  ## check provided paths ##
-  path-must-match-api-standards:
-    description: API Path must match company API uri standards
-    message: "{{description}}; {{property}} incorrect. Example: /digital-twin/api/v1/products"
-    severity: error
-    resolved: false
-    given: $.paths[?(!@property.match(/well-known/ig))~]
-    then:
-      function: pattern
-      functionOptions:
-        match: ^\/([a-z-]+)\/api\/(v[1-9])\/([a-z]+(\w+s\b.*))
 
   ## check provided schema and host in URL ##
   servers-must-match-api-standards:
