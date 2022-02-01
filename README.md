@@ -6,6 +6,8 @@ Schwarz API spectral custom rulesets to be used with [Spectral Linter](https://g
 
 Rulesets are based on file inheritance on custom rulesets as supported by [Spectral Rulesets](https://meta.stoplight.io/docs/spectral/ZG9jOjYyMDc0NA-rulesets) assuming that different API types use the same ruleset but different severity levels as provided by [Spectral Custom Rulesets](https://meta.stoplight.io/docs/spectral/ZG9jOjI1MTg5-custom-rulesets). All API type specific rulesets depend on the same [base ruleset file](./spectral.yml) and just overwrite rulesets or severity levels.
 
+Rules Wiki and HowTo´s can be found [here](https://github.com/SchwarzIT/api-linter-rules/wiki).
+
 Example how to overwrite severity levels in [spectral-api.yml](./spectral-api.yml):
 
 ```yaml
