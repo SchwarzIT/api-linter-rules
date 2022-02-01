@@ -6,7 +6,6 @@
     "@stoplight/spectral-core": "^1.10.0",
     "@stoplight/spectral-ruleset-migrator": "^1.7.2",
     "@types/jest": "^27.4.0",
-    "enhanced-resolve": "^5.8.3",
     "jest": "^27.4.7",
     "jest-node-exports-resolver": "^1.1.5",
     "ts-jest": "^27.1.3",
