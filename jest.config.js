@@ -2,12 +2,11 @@
 const config = {
   preset: "ts-jest",
   testEnvironment: "node",
-  resolver: "./custom-resolver.ts",
+  resolver: "jest-node-exports-resolver",
   transform: {
     "\\.(yml|yaml)$": ["<rootDir>/transforms/spectral-rule-transformer.js"],
   },
-  //moduleFileExtensions: ["yml", "yaml", "js", "ts"],
-  extensionsToTreatAsEsm: [".yml", ".ts"],
+  extensionsToTreatAsEsm: [".yml", ".yaml", ".ts"],
   globals: {
     "ts-jest": {
       useESM: true,
@@ -16,4 +15,3 @@ const config = {
 };
 
 module.exports = config;
-//export default config;

@@ -1,9 +1,9 @@
 declare module '*.yml' {
-  const data: unknown
+  const data: Ruleset | RulesetDefinition
   export default data
 }
 
 declare module '*.yaml' {
-  const data: unknown
+  const data: Ruleset | RulesetDefinition
   export default data
 }

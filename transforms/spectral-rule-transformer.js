@@ -6,7 +6,6 @@ const { migrateRuleset } = require("@stoplight/spectral-ruleset-migrator");
  */
 const transformer = {
   processAsync: async (sourceText, sourcePath, options) => {
-    console.log(options);
     return migrateRuleset(sourcePath, { fs, format: "esm" });
   },
 };
