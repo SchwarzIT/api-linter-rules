@@ -1,0 +1,4 @@
+extends:
+  - ['spectral:oas', recommended]
+rules:
+  operation-tag-defined: off
