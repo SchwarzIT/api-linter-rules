@@ -20,14 +20,8 @@ describe("path-must-match-api-standards", () => {
     expect(result).toHaveLength(1);
     expect(result[0].code).toEqual("path-must-match-api-standards");
     expect(result[0].range).toEqual<IRange>({
-      start: {
-        line: 3,
-        character: 33,
-      },
-      end: {
-        line: 3,
-        character: 36,
-      },
+      start: { line: 3, character: 33 },
+      end: { line: 3, character: 36 },
     });
   });
 

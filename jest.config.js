@@ -12,7 +12,7 @@ const config = {
       useESM: true,
     },
   },
-  setupFilesAfterEnv: ["<rootDir>/util/setupTests.ts"],
+  setupFilesAfterEnv: ["<rootDir>/util/jest.setup.ts"],
 };
 
 module.exports = config;
