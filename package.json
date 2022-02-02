@@ -12,7 +12,8 @@
     "typescript": "^4.5.5"
   },
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",

@@ -13,6 +13,7 @@ const config = {
     },
   },
   setupFilesAfterEnv: ["<rootDir>/util/jest.setup.ts"],
+  moduleFileExtensions: ["js", "ts", "yml", "yaml"]
 };
 
 module.exports = config;
