@@ -1,19 +1,20 @@
-import s from "@stoplight/spectral-core";
+import { Spectral } from "@stoplight/spectral-core";
 import { IRange } from "@stoplight/types/dist/parsers";
 import ruleset from "./path-must-match-api-standards.yml";
 
 describe("path-must-match-api-standards", () => {
-  it("has a correct path", async () => {
-    const spectral = new s.Spectral();
-    spectral.setRuleset(ruleset);
-    const result = await spectral.run(getTestSpec("/api-linting/api/v1/rules"));
+  let spectral: Spectral;
 
+  beforeEach(() => {
+    spectral = setupSpectral(ruleset);
+  });
+
+  it("has a correct path", async () => {
+    const result = await spectral.run(getTestSpec("/api-linting/api/v1/rules"));
     expect(result).toHaveLength(0);
   });
 
   it("fails if the version is missing", async () => {
-    const spectral = new s.Spectral();
-    spectral.setRuleset(ruleset);
     const result = await spectral.run(getTestSpec("/api-linting/api/rules"));
 
     expect(result).toHaveLength(1);
