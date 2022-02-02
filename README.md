@@ -65,9 +65,17 @@ extends:
 
 4. Enjoy API Linting
 
-### IntelliJ
+### Jetbrains IDE family
 
-Comming soon..
+* Install [Spectral Linter for Jetbrains IDE´s](https://github.com/SchwarzIT/spectral-intellij-plugin)
+
+* Open Jetbrains IDE preferences/tools/spectral and configure source rule set (see API Types above) for API linting and files to be linted
+
+![jetbrains_spectral_config.png](./assets/jetbrains_spectral_config.png)
+
+* Enjoy API linting in Jetbrains IDE family
+
+![jetbrains_spectral_linting.png](./assets/jetbrains_spectral_linting.png)
 
 ## Usage in CI
 
