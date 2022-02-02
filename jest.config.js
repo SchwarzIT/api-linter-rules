@@ -4,7 +4,7 @@ const config = {
   testEnvironment: "node",
   resolver: "jest-node-exports-resolver",
   transform: {
-    "\\.(yml|yaml)$": ["<rootDir>/transforms/spectral-rule-transformer.js"],
+    "\\.(yml|yaml)$": ["<rootDir>/transforms/spectralRuleTransformer.js"],
   },
   extensionsToTreatAsEsm: [".yml", ".yaml", ".ts"],
   globals: {
