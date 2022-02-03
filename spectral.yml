@@ -2,17 +2,6 @@ extends:
   - ['spectral:oas', recommended]
 rules:
   # Endpoint Rules
-  must-define-example-schema:
-    description: Every DTO must define at least one example
-    message: "{{description}}; DTO is lacking an example {{path}}"
-    severity: error
-    given: $.paths[?(!@property.match(/well-known/ig))]..content.*
-    then:
-      - function: xor
-        functionOptions:
-          properties:
-            - example
-            - examples
   path-must-specify-tags:
     description: Every route must specify at least one tag it belongs to
     message: "{{description}}; property tags is missing at: {{path}}"
@@ -155,3 +144,14 @@ rules:
         function: pattern
         functionOptions:
           match: "/"
+  must-define-example-schema:
+    description: Every DTO must define at least one example
+    message: "{{description}}; DTO is lacking an example {{path}}"
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))]..content.*
+    then:
+      - function: xor
+        functionOptions:
+          properties:
+            - example
+            - examples
