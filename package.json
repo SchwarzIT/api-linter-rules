@@ -13,7 +13,9 @@
   },
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "build": "bash util/scripts/mergeRules.sh",
+    "postinstall": "chmod +x util/scripts/*"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,9 @@
   "bugs": {
     "url": "https://github.com/SchwarzIT/api-linter-rules/issues"
   },
-  "homepage": "https://github.com/SchwarzIT/api-linter-rules#readme"
+  "homepage": "https://github.com/SchwarzIT/api-linter-rules#readme",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  }
 }
