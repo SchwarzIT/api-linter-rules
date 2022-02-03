@@ -1,17 +1,7 @@
 extends:
-  - ['spectral:oas', recommended]
+  - ["spectral:oas", recommended]
 rules:
-  # Endpoint Rules
-  path-must-specify-tags:
-    description: Every route must specify at least one tag it belongs to
-    message: "{{description}}; property tags is missing at: {{path}}"
-    severity: error
-    given: $.paths[?(!@property.match(/well-known/ig))].*
-    then:
-      - field: tags
-        function: length
-        functionOptions:
-          min: 1
+  operation-tag-defined: off
   ## check provided paths ##
   path-must-match-api-standards:
     description: API Path must match company API uri standards
@@ -23,7 +13,6 @@ rules:
       function: pattern
       functionOptions:
         match: ^\/([a-z-]+)\/api\/(v[1-9])\/([a-z]+(\w+s\b.*))
-  operation-tag-defined: off
   ## check provided schema and host in URL ##
   servers-must-match-api-standards:
     description: Schema and host in URL must match company API standards
@@ -155,3 +144,13 @@ rules:
           properties:
             - example
             - examples
+  path-must-specify-tags:
+    description: Every route must specify at least one tag it belongs to
+    message: "{{description}}; property tags is missing at: {{path}}"
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))].*
+    then:
+      - field: tags
+        function: length
+        functionOptions:
+          min: 1
