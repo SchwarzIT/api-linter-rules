@@ -1,7 +1,6 @@
 extends:
   - ["spectral:oas", recommended]
 rules:
-  operation-tag-defined: off
   ## check provided paths ##
   path-must-match-api-standards:
     description: API Path must match company API uri standards
