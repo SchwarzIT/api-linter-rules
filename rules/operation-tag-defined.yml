@@ -1,4 +1,4 @@
 extends:
-  - ['spectral:oas', recommended]
+  - ["spectral:oas", recommended]
 rules:
   operation-tag-defined: off
