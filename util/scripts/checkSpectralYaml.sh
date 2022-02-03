@@ -7,4 +7,7 @@ if [[ $? -ne 0 ]] ; then
     echo "Error: The currently commited spectral.yml is not up to date and needs to be re-build"
     echo "Please run the script 'mergeRules.sh' under util/scripts/"
     exit 1
+else
+    echo "Success"
+    exit 0
 fi

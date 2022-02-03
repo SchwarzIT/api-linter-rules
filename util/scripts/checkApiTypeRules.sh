@@ -10,6 +10,8 @@ includesRules() {
       # Showing all the rulenames in the second file, that are not overwritten by the first file
       yq eval-all -e 'select(fileIndex == 0) .rules as $a | select(fileIndex == 1) .rules as $b | $a | keys - ($b | keys)' $2 $1
       exit 1
+  else
+    echo "Success"
   fi
 }
 
