@@ -2,18 +2,6 @@ extends:
   - ['spectral:oas', recommended]
 rules:
   # Documentation Rules
-  contact-information:
-    description: Every API must have a contact containing name, email and a url
-    message: "{{description}}; property {{property}} is missing"
-    severity: error
-    given: $.info.contact
-    then:
-      - field: name
-        function: truthy
-      - field: email
-        function: truthy
-      - field: url
-        function: truthy
   path-dto-reference:
     description: DTOs should be used to specify the schema(data types) of a request / response
     message: "{{description}}; property {{property}} is missing"
@@ -157,3 +145,15 @@ rules:
         function: length
         functionOptions:
           min: 100
+  contact-information:
+    description: Every API must have a contact containing name, email and a url
+    message: "{{description}}; property {{property}} is missing"
+    severity: error
+    given: $.info.contact
+    then:
+      - field: name
+        function: truthy
+      - field: email
+        function: truthy
+      - field: url
+        function: truthy
