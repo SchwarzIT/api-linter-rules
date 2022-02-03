@@ -1,0 +1,10 @@
+rules:
+  path-dto-reference:
+    description: DTOs should be used to specify the schema(data types) of a request / response
+    message: "{{description}}; property {{property}} is missing"
+    severity: error
+    given: $.components.schemas
+    then:
+      - function: length
+        functionOptions:
+          min: 1

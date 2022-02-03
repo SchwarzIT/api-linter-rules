@@ -2,15 +2,6 @@ extends:
   - ['spectral:oas', recommended]
 rules:
   # Documentation Rules
-  path-dto-reference:
-    description: DTOs should be used to specify the schema(data types) of a request / response
-    message: "{{description}}; property {{property}} is missing"
-    severity: error
-    given: $.components.schemas
-    then:
-      - function: length
-        functionOptions:
-          min: 1
   ## checks that API has at least one path
   must-have-path:
     description: Every API must have at least one path
@@ -157,3 +148,12 @@ rules:
         function: truthy
       - field: url
         function: truthy
+  path-dto-reference:
+    description: DTOs should be used to specify the schema(data types) of a request / response
+    message: "{{description}}; property {{property}} is missing"
+    severity: error
+    given: $.components.schemas
+    then:
+      - function: length
+        functionOptions:
+          min: 1
