@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Merging all rules with the main ruleset "spectral.yml"
-yq eval-all -i '. as $item ireduce ({}; . * $item )' spectral.yml rules/**/*.yml
-
 includesRules() {
   # Checking that all rulenames of the first file are included in the rulesnames of the second one
   yq eval-all -e 'select(fileIndex == 0) .rules as $a | select(fileIndex == 1) .rules as $b | $b | keys | contains($a | keys)' $2 $1 > /dev/null 2>&1
