@@ -2,23 +2,6 @@ extends:
   - ['spectral:oas', recommended]
 rules:
   # Endpoint Rules
-  ## checks that every route implements the QCRUD functions ##
-  http-verbs-should-be-used:
-    description: HTTP verbs should be used to express different actions or functions on a resource
-    message: "{{description}}; The HTTP verb {{property}} is missing."
-    severity: error
-    given: $.paths[?(!@property.match(/well-known/ig))]
-    then:
-      - field: get
-        function: truthy
-      - field: post
-        function: truthy
-      - field: put
-        function: truthy
-      - field: patch
-        function: truthy
-      - field: delete
-        function: truthy
   ## checks that the http verbs are not used as part of the route path ##
   no-http-verbs-in-resources:
     description: The HTTP Verbs should not be used in the route path to define different actions on a resource
@@ -154,4 +137,21 @@ rules:
     given: $.paths[?(!@property.match(/well-known/ig))]..responses
     then:
       - field: '401'
+        function: truthy
+  ## checks that every route implements the QCRUD functions ##
+  http-verbs-should-be-used:
+    description: HTTP verbs should be used to express different actions or functions on a resource
+    message: "{{description}}; The HTTP verb {{property}} is missing."
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))]
+    then:
+      - field: get
+        function: truthy
+      - field: post
+        function: truthy
+      - field: put
+        function: truthy
+      - field: patch
+        function: truthy
+      - field: delete
         function: truthy

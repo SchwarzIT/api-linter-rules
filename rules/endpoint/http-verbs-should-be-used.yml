@@ -1,0 +1,18 @@
+rules:
+  ## checks that every route implements the QCRUD functions ##
+  http-verbs-should-be-used:
+    description: HTTP verbs should be used to express different actions or functions on a resource
+    message: "{{description}}; The HTTP verb {{property}} is missing."
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))]
+    then:
+      - field: get
+        function: truthy
+      - field: post
+        function: truthy
+      - field: put
+        function: truthy
+      - field: patch
+        function: truthy
+      - field: delete
+        function: truthy
