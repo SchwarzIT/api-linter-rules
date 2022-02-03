@@ -2,16 +2,6 @@ extends:
   - ['spectral:oas', recommended]
 rules:
   # Endpoint Rules
-  must-have-content-type:
-    description: Every response must specify its content type
-    message: "{{description}}; property {{property}} is missing or not a valid content-type"
-    severity: error
-    given: $.paths[?(!@property.match(/well-known/ig))]..content
-    then:
-      - field: "@key"
-        function: pattern
-        functionOptions:
-          match: "/"
   must-define-example-schema:
     description: Every DTO must define at least one example
     message: "{{description}}; DTO is lacking an example {{path}}"
@@ -155,3 +145,13 @@ rules:
         function: truthy
       - field: description
         function: truthy
+  must-have-content-type:
+    description: Every response must specify its content type
+    message: "{{description}}; property {{property}} is missing or not a valid content-type"
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))]..content
+    then:
+      - field: "@key"
+        function: pattern
+        functionOptions:
+          match: "/"
