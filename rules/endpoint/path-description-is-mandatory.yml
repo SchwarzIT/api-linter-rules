@@ -1,0 +1,10 @@
+rules:
+  ## checks that every route has a description. The description of every http verb is mandatory by spectral already ##
+  path-description-is-mandatory:
+    description: Every route of an API should have a description
+    message: "{{description}}; property: {{property}} is missing"
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))]
+    then:
+      - field: description
+        function: truthy
