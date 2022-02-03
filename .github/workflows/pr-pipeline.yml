@@ -24,9 +24,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
-      - name: setup-yq
-        run: snap install yq
+  
+      - name: install yq
+        uses: mikefarah/yq@v4.18.1
 
       # Merge individual rules into spectral.yml
       - name: Merge rules
