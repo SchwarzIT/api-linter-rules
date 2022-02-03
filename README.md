@@ -85,3 +85,13 @@ Comming soon..
 ## Usage in API design first approach
 
 Comming soon..
+
+## Building
+
+In order to save on http requests, when using one of the rulesets, the individual rules are not extended but bundled.
+In a build step all individual rules are collected and merged into the file spectral.yml.
+
+For this the cli tool [yq](https://github.com/mikefarah/yq) is used.
+So in order to build the rules you need to have it installed locally. (See [installing yq](https://github.com/mikefarah/yq#install))
+
+Also keep in mind, that the rules are built using bash scripts. So if you're on windows, you might want to use something like GitBash or [WSL](https://docs.microsoft.com/de-de/windows/wsl/about)
