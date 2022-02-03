@@ -1,18 +1,6 @@
 extends:
   - ['spectral:oas', recommended]
 rules:
-  # General Rules
-  ## check provided schema and host in URL ##
-  servers-must-match-api-standards:
-    description: Schema and host in URL must match company API standards
-    message: "{{description}}; {{property}}:{{value}} incorrect. Example: https://live.api.schwarz/digital-twin/api/v1/products"
-    severity: error
-    resolved: false
-    given: "$.servers..url"
-    then:
-      function: pattern
-      functionOptions:
-        match: ^((http[s]?):\/\/)([a-z]+)([.+])api.schwarz
   # Documentation Rules
   info-description:
     description: Every API must have a global description
@@ -158,3 +146,14 @@ rules:
       functionOptions:
         match: ^\/([a-z-]+)\/api\/(v[1-9])\/([a-z]+(\w+s\b.*))
   operation-tag-defined: off
+  ## check provided schema and host in URL ##
+  servers-must-match-api-standards:
+    description: Schema and host in URL must match company API standards
+    message: "{{description}}; {{property}}:{{value}} incorrect. Example: https://live.api.schwarz/digital-twin/api/v1/products"
+    severity: error
+    resolved: false
+    given: "$.servers..url"
+    then:
+      function: pattern
+      functionOptions:
+        match: ^((http[s]?):\/\/)([a-z]+)([.+])api.schwarz
