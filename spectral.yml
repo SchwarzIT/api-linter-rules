@@ -1,18 +1,6 @@
 extends:
   - ['spectral:oas', recommended]
 rules:
-  # Documentation Rules
-  ## checks that API has at least one path
-  must-have-path:
-    description: Every API must have at least one path
-    message: "{{description}}; property `paths` is empty"
-    severity: error
-    given: $
-    then:
-      - field: paths
-        function: length
-        functionOptions:
-          min: 1
   # Endpoint Rules
 
   ## check that 401 response is implemented ##
@@ -155,5 +143,16 @@ rules:
     given: $.components.schemas
     then:
       - function: length
+        functionOptions:
+          min: 1
+  ## checks that API has at least one path
+  must-have-path:
+    description: Every API must have at least one path
+    message: "{{description}}; property `paths` is empty"
+    severity: error
+    given: $
+    then:
+      - field: paths
+        function: length
         functionOptions:
           min: 1
