@@ -37,8 +37,8 @@ jobs:
 
       # Check that the commited spectral.yml is up to date
       - name: Check spectral.yml
-        run: bash ./util/scripts/mergeRules.sh
+        run: bash ./util/scripts/checkSpectralYaml.sh
 
       # Check that all api types overwrite all rules of spectral.yml
       - name: Check spectral-*.yml
-        run: bash ./util/scripts/mergeRules.sh
+        run: bash ./util/scripts/checkApiTypeRules.sh
