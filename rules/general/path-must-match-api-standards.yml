@@ -1,3 +1,6 @@
+# Test Comment
+# *another line*
+
 rules:
   ## check provided paths ##
   path-must-match-api-standards:
