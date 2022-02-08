@@ -1,4 +1,4 @@
-name: PR Pipeline
+name: Wiki Pipeline
 
 on:
   push:
@@ -23,17 +23,20 @@ jobs:
       - name: install yq
         uses: mikefarah/yq@v4.18.1
 
-      - name: Merge rules
+      - name: generate docs
         run: bash ./util/scripts/generateDocs.sh ./rules ./wiki
 
-      - name: ls
-        run: ls -la
+      - name: go to wiki repo
+        run: cd ./wiki
 
-      - name: ls wiki
-        run: ls -la ./wiki
+      - name: create branch
+        run: git branch test && git checkout test
 
-      - name: diff
-        run: cd ./wiki && git diff
+      - name: stage updates
+        run: git add *.md
 
-      - name: test push
-        run: git push # Noting is staged so this shouldn't do anything
+      - name: commit updates
+        run: git commit -m "Generated Wiki"
+
+      - name: push changes
+        run: git push
