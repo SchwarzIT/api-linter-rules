@@ -35,8 +35,14 @@ jobs:
       - name: set commit user
         run: git config user.email "wiki@pipeline" && git config user.name "Wiki Pipeline"
 
+      - name: git status
+        run: git status
+
       - name: stage updates
         run: git add *.md
+
+      - name: git status
+        run: git status
 
       - name: commit updates
         run: git commit -m "Generated Wiki"
