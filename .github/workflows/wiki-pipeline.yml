@@ -32,6 +32,9 @@ jobs:
       - name: create branch
         run: git branch test && git checkout test
 
+      - name: set commit user
+        run: git config user.email "wiki@pipeline" && git config user.name "Wiki Pipeline"
+
       - name: stage updates
         run: git add *.md
 
