@@ -3,7 +3,7 @@ name: Wiki Pipeline
 on:
   push:
     branches:
-      - "testing" # ToDo: Change to "main" before merge
+      - "main"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -28,10 +28,6 @@ jobs:
       - name: generate docs
         run: bash ./util/scripts/generateDocs.sh ./rules ./wiki
 
-      - name: create branch
-        working-directory: ${{env.working-directory}}
-        run: git branch test && git checkout test
-
       - name: set commit user
         working-directory: ${{env.working-directory}}
         run: git config --global user.email "wiki@pipeline" && git config --global user.name "Wiki Pipeline"
@@ -46,4 +42,4 @@ jobs:
 
       - name: push changes
         working-directory: ${{env.working-directory}}
-        run: git push --set-upstream origin test
+        run: git push
