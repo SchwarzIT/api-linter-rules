@@ -17,9 +17,6 @@ jobs:
       - name: install yq
         uses: mikefarah/yq@v4.18.1
 
-      - name: test
-        run: yq --version
-
       # Merge individual rules into spectral.yml
       - name: Merge rules
         run: bash ./util/scripts/mergeRules.sh
