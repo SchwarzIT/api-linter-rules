@@ -1,0 +1,39 @@
+name: PR Pipeline
+
+on:
+  push:
+    branches:
+      - "testing" # ToDo: Change to "main" before merge
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  updateWiki:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/checkout@v2
+        with:
+          repository: ${{github.repository}}.wiki
+          path: wiki
+  
+      - name: install yq
+        uses: mikefarah/yq@v4.18.1
+
+      - name: Merge rules
+        run: bash ./util/scripts/generateDocs.sh ./rules ./wiki
+
+      - name: ls
+        run: ls -la
+
+      - name: ls wiki
+        run: ls -la ./wiki
+
+      - name: diff
+        run: cd ./wiki && git diff
+
+      - name: test push
+        run: git push # Noting is staged so this shouldn't do anything
