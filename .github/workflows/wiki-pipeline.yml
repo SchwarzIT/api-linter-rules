@@ -11,6 +11,8 @@ on:
 jobs:
   updateWiki:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./wiki
 
     steps:
       - uses: actions/checkout@v2
@@ -29,23 +31,37 @@ jobs:
       - name: go to wiki repo
         run: cd ./wiki
 
+      - name: ls
+        run: ls -la
+
+      - name: ls (working dir)
+        working-directory: ${{env.working-directory}}
+        run: ls -la
+
       - name: create branch
+        working-directory: ${{env.working-directory}}
         run: git branch test && git checkout test
 
       - name: set commit user
-        run: git config user.email "wiki@pipeline" && git config user.name "Wiki Pipeline"
+        working-directory: ${{env.working-directory}}
+        run: git config --global user.email "wiki@pipeline" && git config --global user.name "Wiki Pipeline"
 
       - name: git status
+        working-directory: ${{env.working-directory}}
         run: git status
 
       - name: stage updates
+        working-directory: ${{env.working-directory}}
         run: git add *.md
 
       - name: git status
+        working-directory: ${{env.working-directory}}
         run: git status
 
       - name: commit updates
+        working-directory: ${{env.working-directory}}
         run: git commit -m "Generated Wiki"
 
       - name: push changes
+        working-directory: ${{env.working-directory}}
         run: git push
