@@ -28,16 +28,6 @@ jobs:
       - name: generate docs
         run: bash ./util/scripts/generateDocs.sh ./rules ./wiki
 
-      - name: go to wiki repo
-        run: cd ./wiki
-
-      - name: ls
-        run: ls -la
-
-      - name: ls (working dir)
-        working-directory: ${{env.working-directory}}
-        run: ls -la
-
       - name: create branch
         working-directory: ${{env.working-directory}}
         run: git branch test && git checkout test
@@ -46,17 +36,9 @@ jobs:
         working-directory: ${{env.working-directory}}
         run: git config --global user.email "wiki@pipeline" && git config --global user.name "Wiki Pipeline"
 
-      - name: git status
-        working-directory: ${{env.working-directory}}
-        run: git status
-
       - name: stage updates
         working-directory: ${{env.working-directory}}
         run: git add *.md
-
-      - name: git status
-        working-directory: ${{env.working-directory}}
-        run: git status
 
       - name: commit updates
         working-directory: ${{env.working-directory}}
@@ -64,4 +46,4 @@ jobs:
 
       - name: push changes
         working-directory: ${{env.working-directory}}
-        run: git push
+        run: git push --set-upstream origin test
