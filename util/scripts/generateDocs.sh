@@ -7,15 +7,20 @@ function printRules() {
     if [ ! -d "${file}" ] ; then
       if [[ ( $file == *.yml ) || ( $file == *.yaml )]] ; then
         comment=`yq 'headComment' $file`
-        file=`basename ${file%.*}`
-        echo "### $file$NL" >> $2
+        ruleName=`basename ${file%.*}`
+        echo "### $ruleName$NL" >> $2
 
         [ ! -z "$comment" ] && echo "$comment$NL" >> $2
 
         echo "**Severities**$NL" >> $2
-        echo "- Product API Severity Level: $(yq .rules.$file spectral-api.yml)" >> $2
-        echo "- BFF API Severity Level: $(yq .rules.$file spectral-bff.yml)" >> $2
-        echo "- Legacy API Severity Level: $(yq .rules.$file spectral-legacy.yml)$NL" >> $2
+        echo "- Product API Severity Level: $(yq .rules."$ruleName" spectral-api.yml)" >> $2
+        echo "- BFF API Severity Level: $(yq .rules."$ruleName" spectral-bff.yml)" >> $2
+        echo "- Legacy API Severity Level: $(yq .rules."$ruleName" spectral-legacy.yml)$NL" >> $2
+
+        sourceCode=`yq ".rules."$ruleName" | parent" "$file"`
+        echo "\`\`\`yml" >> $2
+        echo "$sourceCode" >> $2
+        echo "\`\`\`$NL" >> $2
       fi
     fi
   done
