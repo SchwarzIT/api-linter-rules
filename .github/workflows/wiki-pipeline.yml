@@ -17,6 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      # Checking out the wiki repo under the path ./wiki/
       - uses: actions/checkout@v2
         with:
           repository: ${{github.repository}}.wiki
@@ -25,6 +26,7 @@ jobs:
       - name: install yq
         uses: mikefarah/yq@v4.18.1
 
+      # Generating the wiki pages from the comments inside the rules
       - name: generate docs
         run: bash ./util/scripts/generateDocs.sh ./rules ./wiki
 

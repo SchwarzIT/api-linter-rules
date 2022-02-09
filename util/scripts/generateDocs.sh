@@ -6,17 +6,20 @@ function printRules() {
   do
     if [ ! -d "${file}" ] ; then
       if [[ ( $file == *.yml ) || ( $file == *.yaml )]] ; then
-        comment=`yq 'headComment' $file`
-        ruleName=`basename ${file%.*}`
+        comment=`yq 'headComment' $file` # Extracting the head comment from the rule
+        ruleName=`basename ${file%.*}` # Getting the name of the rule by removing the suffix from the file name
         echo "### $ruleName$NL" >> $2
 
+        # If there's a head comment it gets added to the wiki
         [ ! -z "$comment" ] && echo "$comment$NL" >> $2
 
+        # Getting the severity levels for that rule from the api types
         echo "**Severities**$NL" >> $2
         echo "- Product API Severity Level: $(yq .rules."$ruleName" spectral-api.yml)" >> $2
         echo "- BFF API Severity Level: $(yq .rules."$ruleName" spectral-bff.yml)" >> $2
         echo "- Legacy API Severity Level: $(yq .rules."$ruleName" spectral-legacy.yml)$NL" >> $2
 
+        # Extracting the rules source code and adding it to the wiki
         sourceCode=`yq ".rules."$ruleName" | parent" "$file"`
         echo "\`\`\`yml" >> $2
         echo "$sourceCode" >> $2
@@ -35,6 +38,8 @@ function addTrailingSlash() {
   echo $STR
 }
 
+# Iterates over every folder in the specified directory
+# then creates a wiki page with its name and appends the rules to it.
 for file in "$1"/*
 do
   if [ -d "${file}" ] ; then
