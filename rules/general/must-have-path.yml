@@ -1,5 +1,6 @@
+# Rule to check if the given API spec does have at least one path defined
+
 rules:
-  ## checks that API has at least one path
   must-have-path:
     description: Every API must have at least one path
     message: "{{description}}; property `paths` is empty"
