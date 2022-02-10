@@ -2,7 +2,6 @@ extends:
   - ["spectral:oas", recommended]
 rules:
   operation-tag-defined: off
-  ## check provided paths ##
   path-must-match-api-standards:
     description: API Path must match company API uri standards
     message: "{{description}}; {{property}} incorrect. Example: /digital-twin/api/v1/products"
@@ -13,7 +12,6 @@ rules:
       function: pattern
       functionOptions:
         match: ^\/([a-z-]+)\/api\/(v[1-9])\/([a-z]+(\w+s\b.*))
-  ## check provided schema and host in URL ##
   servers-must-match-api-standards:
     description: Schema and host in URL must match company API standards
     message: "{{description}}; {{property}}:{{value}} incorrect. Example: https://live.api.schwarz/digital-twin/api/v1/products"
@@ -57,7 +55,6 @@ rules:
       - function: length
         functionOptions:
           min: 1
-  ## checks that API has at least one path
   must-have-path:
     description: Every API must have at least one path
     message: "{{description}}; property `paths` is empty"
@@ -68,7 +65,6 @@ rules:
         function: length
         functionOptions:
           min: 1
-  ## check that 401 response is implemented ##
   common-responses-unauthorized:
     description: Responses should contain common response - 401 (unauthorized)
     message: "{{description}}. Missing {{property}}"
@@ -77,7 +73,6 @@ rules:
     then:
       - field: '401'
         function: truthy
-  ## checks that every route implements the QCRUD functions ##
   http-verbs-should-be-used:
     description: HTTP verbs should be used to express different actions or functions on a resource
     message: "{{description}}; The HTTP verb {{property}} is missing."
@@ -94,7 +89,6 @@ rules:
         function: truthy
       - field: delete
         function: truthy
-  ## checks that the http verbs are not used as part of the route path ##
   no-http-verbs-in-resources:
     description: The HTTP Verbs should not be used in the route path to define different actions on a resource
     message: "{{description}}; {{property}} Instead use HTTP verbs to define actions on a resource. Example: PUT - /digital-twin/api/v1/products/42"
@@ -104,7 +98,6 @@ rules:
       function: pattern
       functionOptions:
         notMatch: \/(get|post|put|patch|delete)(\/|$)
-  ## checks that every route has a description. The description of every http verb is mandatory by spectral already ##
   path-description-is-mandatory:
     description: Every route of an API should have a description
     message: "{{description}}; property: {{property}} is missing"
