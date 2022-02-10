@@ -1,3 +1,5 @@
+# The Rule "operation-tag-defined" is from the spectral:oas recommended ruleset was disabled
+
 extends:
   - ["spectral:oas", recommended]
 rules:

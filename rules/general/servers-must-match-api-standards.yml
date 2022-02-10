@@ -1,5 +1,7 @@
+# Rule to check if provided server urls stick to the API best practices
+# Status: DEACTIVATED - in discussion
+
 rules:
-  ## check provided schema and host in URL ##
   servers-must-match-api-standards:
     description: Schema and host in URL must match company API standards
     message: "{{description}}; {{property}}:{{value}} incorrect. Example: https://live.api.schwarz/digital-twin/api/v1/products"
