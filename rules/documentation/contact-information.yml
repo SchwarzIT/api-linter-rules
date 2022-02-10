@@ -1,3 +1,5 @@
+# Rule to check if the contact data for the provided API is in place
+
 rules:
   contact-information:
     description: Every API must have a contact containing name, email and a url

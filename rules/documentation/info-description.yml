@@ -1,3 +1,6 @@
+# Rule to check the global description of the provided API.
+# It must be present and at least 100 characters long.
+
 rules:
   info-description:
     description: Every API must have a global description

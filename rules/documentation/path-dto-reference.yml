@@ -1,3 +1,5 @@
+# Rule to check if DTO's are used to specify the schema of a request or response
+
 rules:
   path-dto-reference:
     description: DTOs should be used to specify the schema(data types) of a request / response
