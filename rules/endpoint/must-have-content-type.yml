@@ -1,3 +1,5 @@
+# Rule to check that every path response has a content type defined
+
 rules:
   must-have-content-type:
     description: Every response must specify its content type

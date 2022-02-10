@@ -1,5 +1,6 @@
+# Rule to check misuse of http verbs in url names
+
 rules:
-  ## checks that the http verbs are not used as part of the route path ##
   no-http-verbs-in-resources:
     description: The HTTP Verbs should not be used in the route path to define different actions on a resource
     message: "{{description}}; {{property}} Instead use HTTP verbs to define actions on a resource. Example: PUT - /digital-twin/api/v1/products/42"

@@ -1,5 +1,6 @@
+# Rule to check if a 401 response is implemented on all paths responses
+
 rules:
-  ## check that 401 response is implemented ##
   common-responses-unauthorized:
     description: Responses should contain common response - 401 (unauthorized)
     message: "{{description}}. Missing {{property}}"

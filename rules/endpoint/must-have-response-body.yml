@@ -1,3 +1,5 @@
+# Rule to check that every path with HTTP status code of 200 or 201 has a response body defined
+
 rules:
   must-have-response-body:
     description: Every route returning a http status code of 200 or 201 must have a response body defined

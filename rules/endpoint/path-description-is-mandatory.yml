@@ -1,5 +1,6 @@
+# Rule to check if every path has a description defined
+
 rules:
-  ## checks that every route has a description. The description of every http verb is mandatory by spectral already ##
   path-description-is-mandatory:
     description: Every route of an API should have a description
     message: "{{description}}; property: {{property}} is missing"

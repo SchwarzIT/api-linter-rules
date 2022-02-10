@@ -1,3 +1,5 @@
+# Rule to check if every path specifies at least one tag
+
 rules:
   path-must-specify-tags:
     description: Every route must specify at least one tag it belongs to
