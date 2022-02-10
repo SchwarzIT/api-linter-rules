@@ -50,7 +50,7 @@ do
     rm $fileName
 
     echo "Schwarz API custom rulesets depend heavily on [Spectral OAS Recommended Rules](https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#license-url). We consider them to be a very good starting point that we built our custom rules on top of it.$NL" >> $fileName
-    echo "Below you´ll find a more semantic description about the API $folder rulesets.$NL" >> $fileName
+    echo "Below you'll find a more semantic description about the API $folder rulesets.$NL" >> $fileName
     echo "***$NL" >> $fileName
     echo "## API $folder rules$NL" >> $fileName
     printRules "${file}" $fileName $2
