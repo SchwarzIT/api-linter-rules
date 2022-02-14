@@ -1,0 +1,13 @@
+# Rule to check that every path with HTTP status code of 200 or 201 has a response body defined
+
+rules:
+  must-have-response-body:
+    description: Every route returning a http status code of 200 or 201 must have a response body defined
+    message: "{{description}}; property {{property}} is missing at path: {{path}}"
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))]..responses[200,201]
+    then:
+      - field: content
+        function: truthy
+      - field: description
+        function: truthy

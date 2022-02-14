@@ -1,0 +1,13 @@
+# Rule to check if the given API spec does have at least one path defined
+
+rules:
+  must-have-path:
+    description: Every API must have at least one path
+    message: "{{description}}; property `paths` is empty"
+    severity: error
+    given: $
+    then:
+      - field: paths
+        function: length
+        functionOptions:
+          min: 1

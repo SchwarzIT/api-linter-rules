@@ -1,0 +1,48 @@
+name: PR Pipeline
+
+on:
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  checkRules:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+  
+      - name: install yq
+        uses: mikefarah/yq@v4.18.1
+
+      # Merge individual rules into spectral.yml
+      - name: Merge rules
+        run: bash ./util/scripts/mergeRules.sh
+
+      # Check that the commited spectral.yml is up to date
+      - name: Check spectral.yml
+        run: bash ./util/scripts/checkSpectralYaml.sh
+
+      # Check that all api types overwrite all rules of spectral.yml
+      - name: Check spectral-*.yml
+        run: bash ./util/scripts/checkApiTypeRules.sh
+
+  runTests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Tests
+        run: npm run test

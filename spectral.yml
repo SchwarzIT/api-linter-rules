@@ -1,11 +1,7 @@
-extends: [[spectral:oas, recommended]]
+extends:
+  - ["spectral:oas", recommended]
 rules:
-
-  # General Rules
-
   operation-tag-defined: off
-
-  ## check provided paths ##
   path-must-match-api-standards:
     description: API Path must match company API uri standards
     message: "{{description}}; {{property}} incorrect. Example: /digital-twin/api/v1/products"
@@ -16,8 +12,6 @@ rules:
       function: pattern
       functionOptions:
         match: ^\/([a-z-]+)\/api\/(v[1-9])\/([a-z]+(\w+s\b.*))
-
-  ## check provided schema and host in URL ##
   servers-must-match-api-standards:
     description: Schema and host in URL must match company API standards
     message: "{{description}}; {{property}}:{{value}} incorrect. Example: https://live.api.schwarz/digital-twin/api/v1/products"
@@ -27,10 +21,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^((http[s]?):\/\/)([a-z]+)([.+])api.schwarz"
-
-  # Documentation Rules
-
+        match: ^((http[s]?):\/\/)([a-z]+)([.+])api.schwarz
   info-description:
     description: Every API must have a global description
     message: "OpenAPI object info `description` must be present and at least 100 chars long."
@@ -43,7 +34,6 @@ rules:
         function: length
         functionOptions:
           min: 100
-
   contact-information:
     description: Every API must have a contact containing name, email and a url
     message: "{{description}}; property {{property}} is missing"
@@ -56,7 +46,6 @@ rules:
         function: truthy
       - field: url
         function: truthy
-
   path-dto-reference:
     description: DTOs should be used to specify the schema(data types) of a request / response
     message: "{{description}}; property {{property}} is missing"
@@ -66,8 +55,6 @@ rules:
       - function: length
         functionOptions:
           min: 1
-
-  ## checks that API has at least one path
   must-have-path:
     description: Every API must have at least one path
     message: "{{description}}; property `paths` is empty"
@@ -78,10 +65,6 @@ rules:
         function: length
         functionOptions:
           min: 1
-
-  # Endpoint Rules
-
-  ## check that 401 response is implemented ##
   common-responses-unauthorized:
     description: Responses should contain common response - 401 (unauthorized)
     message: "{{description}}. Missing {{property}}"
@@ -90,8 +73,6 @@ rules:
     then:
       - field: '401'
         function: truthy
-
-  ## checks that every route implements the QCRUD functions ##
   http-verbs-should-be-used:
     description: HTTP verbs should be used to express different actions or functions on a resource
     message: "{{description}}; The HTTP verb {{property}} is missing."
@@ -108,8 +89,6 @@ rules:
         function: truthy
       - field: delete
         function: truthy
-
-  ## checks that the http verbs are not used as part of the route path ##
   no-http-verbs-in-resources:
     description: The HTTP Verbs should not be used in the route path to define different actions on a resource
     message: "{{description}}; {{property}} Instead use HTTP verbs to define actions on a resource. Example: PUT - /digital-twin/api/v1/products/42"
@@ -118,9 +97,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        notMatch: "\/(get|post|put|patch|delete)(\/|$)"
-
-  ## checks that every route has a description. The description of every http verb is mandatory by spectral already ##
+        notMatch: \/(get|post|put|patch|delete)(\/|$)
   path-description-is-mandatory:
     description: Every route of an API should have a description
     message: "{{description}}; property: {{property}} is missing"
@@ -129,7 +106,6 @@ rules:
     then:
       - field: description
         function: truthy
-
   must-have-response-body:
     description: Every route returning a http status code of 200 or 201 must have a response body defined
     message: "{{description}}; property {{property}} is missing at path: {{path}}"
@@ -140,7 +116,6 @@ rules:
         function: truthy
       - field: description
         function: truthy
-
   must-have-content-type:
     description: Every response must specify its content type
     message: "{{description}}; property {{property}} is missing or not a valid content-type"
@@ -151,7 +126,6 @@ rules:
         function: pattern
         functionOptions:
           match: "/"
-
   must-define-example-schema:
     description: Every DTO must define at least one example
     message: "{{description}}; DTO is lacking an example {{path}}"
@@ -163,7 +137,6 @@ rules:
           properties:
             - example
             - examples
-
   path-must-specify-tags:
     description: Every route must specify at least one tag it belongs to
     message: "{{description}}; property tags is missing at: {{path}}"

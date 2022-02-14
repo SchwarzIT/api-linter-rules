@@ -1,0 +1,14 @@
+# Rule to check if provided server urls stick to the API best practices
+# Status: DEACTIVATED - in discussion
+
+rules:
+  servers-must-match-api-standards:
+    description: Schema and host in URL must match company API standards
+    message: "{{description}}; {{property}}:{{value}} incorrect. Example: https://live.api.schwarz/digital-twin/api/v1/products"
+    severity: error
+    resolved: false
+    given: "$.servers..url"
+    then:
+      function: pattern
+      functionOptions:
+        match: ^((http[s]?):\/\/)([a-z]+)([.+])api.schwarz

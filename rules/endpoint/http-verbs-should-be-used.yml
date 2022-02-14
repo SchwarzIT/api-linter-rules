@@ -1,0 +1,19 @@
+# Rule to check if a resource is implementing all intended HTTP verbs for a data source
+
+rules:
+  http-verbs-should-be-used:
+    description: HTTP verbs should be used to express different actions or functions on a resource
+    message: "{{description}}; The HTTP verb {{property}} is missing."
+    severity: error
+    given: $.paths[?(!@property.match(/well-known/ig))]
+    then:
+      - field: get
+        function: truthy
+      - field: post
+        function: truthy
+      - field: put
+        function: truthy
+      - field: patch
+        function: truthy
+      - field: delete
+        function: truthy

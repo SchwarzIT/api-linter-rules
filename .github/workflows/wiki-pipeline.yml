@@ -1,0 +1,47 @@
+name: Wiki Pipeline
+
+on:
+  push:
+    branches:
+      - "main"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  updateWiki:
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./wiki
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Checking out the wiki repo under the path ./wiki/
+      - uses: actions/checkout@v2
+        with:
+          repository: ${{github.repository}}.wiki
+          path: wiki
+  
+      - name: install yq
+        uses: mikefarah/yq@v4.18.1
+
+      # Generating the wiki pages from the comments inside the rules
+      - name: generate docs
+        run: bash ./util/scripts/generateDocs.sh ./rules ./wiki
+
+      - name: set commit user
+        working-directory: ${{env.working-directory}}
+        run: git config --global user.email "wiki@pipeline" && git config --global user.name "Wiki Pipeline"
+
+      - name: stage updates
+        working-directory: ${{env.working-directory}}
+        run: git add *.md
+
+      - name: commit updates
+        working-directory: ${{env.working-directory}}
+        run: git commit -m "Generated Wiki"
+
+      - name: push changes
+        working-directory: ${{env.working-directory}}
+        run: git push
