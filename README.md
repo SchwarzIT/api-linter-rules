@@ -90,6 +90,7 @@ Comming soon..
 
 In order to save on http requests, when using one of the rulesets, the individual rules are not extended but bundled.
 In a build step all individual rules are collected and merged into the file spectral.yml.
+Splitting our ruleset into individual rules also improves maintainability as well as testing.
 
 For this the cli tool [yq](https://github.com/mikefarah/yq) is used.
 So in order to build the rules you need to have it installed locally. (See [installing yq](https://github.com/mikefarah/yq#install))
