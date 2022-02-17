@@ -37,8 +37,17 @@ extends: [[spectral:oas, recommended]]
 ## Supported API Types
 
 * Product API ruleset is defined in [spectral-api.yml](./spectral-api.yml)
+  ```
+  https://raw.githubusercontent.com/SchwarzIT/api-linter-rules/main/spectral-api.yml
+  ```
 * Backend For Frontend is defined in [spectral-bff.yml](./spectral-bff.yml)
+  ```
+  https://raw.githubusercontent.com/SchwarzIT/api-linter-rules/main/spectral-bff.yml
+  ```
 * Legacy API is defined in [spectral-legacy.yml](./spectral-legacy.yml)
+  ```
+  https://raw.githubusercontent.com/SchwarzIT/api-linter-rules/main/spectral-legacy.yml
+  ```
 
 ## Local usage in IDE
 
