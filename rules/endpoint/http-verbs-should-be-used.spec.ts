@@ -13,6 +13,11 @@ describe("http-verbs-should-be-used", () => {
     expect(result).toHaveLength(0);
   });
 
+  it("ignores paths unde /well-known/", async () => {
+    const result = await spectral.run(getTestSpec(["get"], "/well-known/api/something"));
+    expect(result).toHaveLength(0);
+  });
+
   it.each<Parameters<typeof getTestSpec>[0][]>([
     [[]],
     [["post", "put", "patch", "delete"]],
