@@ -35,7 +35,7 @@ describe("must-define-example-schema", () => {
     expect(result).toHaveLength(0);
   });
 
-  const getTestSpec = (examples: { example?: boolean; examples?: boolean }, path = "/api/some/path") => ({
+  const getTestSpec = (examples: { example?: boolean; examples?: boolean }, path = "/api/some/path"): string => JSON.stringify({
     paths: {
       [path]: {
         post: {
@@ -54,5 +54,5 @@ describe("must-define-example-schema", () => {
         },
       },
     },
-  });
+  }, null, 2);
 });
