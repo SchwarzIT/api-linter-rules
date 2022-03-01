@@ -1,5 +1,4 @@
 import { Spectral } from "@stoplight/spectral-core";
-import { IRange } from "@stoplight/types/dist/parsers";
 import ruleset from "./contact-information.yml";
 
 describe("contact-information", () => {
