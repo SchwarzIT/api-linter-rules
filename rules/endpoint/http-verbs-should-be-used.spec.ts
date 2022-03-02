@@ -27,7 +27,7 @@ describe("http-verbs-should-be-used", () => {
     [["get", "post", "put", "patch"]],
   ])("fails if any of the http verbs is missing", async (responses) => {
     const result = await spectral.run(getTestSpec(responses));
-    expect(result).toHaveLength(1);
+    expect(result.length).toBeGreaterThanOrEqual(1);
     expect(result[0].code).toEqual("http-verbs-should-be-used");
   });
 
