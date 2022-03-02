@@ -46,7 +46,6 @@ describe.each([getTestSpecJson, getTestSpecYaml])("must-have-response-body - %p"
     [true, { 200: true, 201: true }, {}, "/well-known/some/path"],
   ])("%s for the http codes %o and response content %o for path %p", async (expectedResult, httpCodes, fields, path) => {
     const testSpec = getTestSpec(httpCodes, fields, path);
-    console.log(testSpec);
     const result = await spectral.run(testSpec);
 
     if (expectedResult) {
