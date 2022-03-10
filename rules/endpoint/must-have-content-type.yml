@@ -8,6 +8,8 @@ rules:
     given: $.paths[?(!@property.match(/well-known/ig))]..content
     then:
       - field: "@key"
+        function: truthy
+      - field: "@key"
         function: pattern
         functionOptions:
           match: "/"

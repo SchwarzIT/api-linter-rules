@@ -25,6 +25,16 @@ describe("path-must-match-api-standards", () => {
     });
   });
 
+  it.each<`${string}well-known${string}`>([
+    "/well-known/",
+    "well-known",
+    "/api/well-known/test",
+    "/well-known/api/v2",
+  ])("ignores the 'well-known' routes", async (route) => {
+    const result = await spectral.run(getTestSpec(route));
+    expect(result).toHaveLength(0);
+  });
+
   const getTestSpec = (path: string) => `
     {
       "paths": {
