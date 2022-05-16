@@ -1,0 +1,2 @@
+extends:
+  - https://raw.githubusercontent.com/SchwarzIT/api-linter-rules/main/spectral-async-api.yml
