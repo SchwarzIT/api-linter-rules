@@ -17,14 +17,14 @@ rules:
   must-define-example-schema: info
   path-must-specify-tags: info
 
-  # We do not want to hinder anyone from deploying, therefore we overwrite all default rules from spectral with a severity of error to warning
-  operation-operationId-unique: warn
-  path-params: warn
-  no-$ref-siblings: warn
-  oas2-discriminator: warn
-  oas2-valid-schema-example: warn
-  oas2-valid-media-example: warn
-  oas2-schema: warn
-  oas3-valid-media-example: warn
-  oas3-valid-schema-example: warn
-  oas3-schema: warn
+  # We do not want to hinder anyone from deploying, therefore we overwrite all default rules from spectral with a severity of error to infoing
+  operation-operationId-unique: info
+  path-params: info
+  no-$ref-siblings: info
+  oas2-discriminator: info
+  oas2-valid-schema-example: info
+  oas2-valid-media-example: info
+  oas2-schema: info
+  oas3-valid-media-example: info
+  oas3-valid-schema-example: info
+  oas3-schema: info
