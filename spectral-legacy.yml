@@ -17,7 +17,7 @@ rules:
   must-define-example-schema: info
   path-must-specify-tags: info
 
-  # We do not want to hinder anyone from deploying, therefore we overwrite all default rules from spectral with a severity of error to infoing
+  # We do not want to hinder anyone from deploying, therefore we overwrite all default rules from spectral with a severity of error to info
   operation-operationId-unique: info
   path-params: info
   no-$ref-siblings: info
