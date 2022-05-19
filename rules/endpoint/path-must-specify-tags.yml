@@ -8,6 +8,8 @@ rules:
     given: $.paths[?(!@property.match(/well-known/ig))].*
     then:
       - field: tags
+        function: truthy
+      - field: tags
         function: length
         functionOptions:
           min: 1

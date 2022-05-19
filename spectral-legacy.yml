@@ -4,7 +4,7 @@ rules:
   operation-tag-defined: off
   path-must-match-api-standards: off # Rule is still under discussion and therefore disabled
   servers-must-match-api-standards: off # Rule is still under discussion and therefore disabled
-  common-responses-unauthorized: info
+  common-responses-unauthorized: hint
   http-verbs-should-be-used: info
   no-http-verbs-in-resources: info
   path-description-is-mandatory: info
@@ -17,3 +17,15 @@ rules:
   must-have-content-type: info
   must-define-example-schema: info
   path-must-specify-tags: info
+
+  # We do not want to hinder anyone from deploying, therefore we overwrite all default rules from spectral with a severity of error to info
+  operation-operationId-unique: info
+  path-params: info
+  no-$ref-siblings: info
+  oas2-discriminator: info
+  oas2-valid-schema-example: info
+  oas2-valid-media-example: info
+  oas2-schema: info
+  oas3-valid-media-example: info
+  oas3-valid-schema-example: info
+  oas3-schema: info

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Checking whether there were changes to the repo. This is used after the file spectral.yml war re-built.
+# Checking whether there were changes to the repo. This is used after the file spectral.yml was re-built.
 git diff --exit-code > /dev/null
 
 if [[ $? -ne 0 ]] ; then
