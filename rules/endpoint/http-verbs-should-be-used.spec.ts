@@ -1,20 +1,24 @@
 import { Spectral } from "@stoplight/spectral-core";
-import ruleset from "./http-verbs-should-be-used.yml";
+import {setupSpectral} from "../../util/setup-spectral";
 
 describe("http-verbs-should-be-used", () => {
-  let spectral: Spectral;
+  let spectral: Promise<Spectral>;
 
   beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+    spectral = setupSpectral("rules/endpoint/http-verbs-should-be-used.yml");
   });
 
   it("has no errors all http verbs are used", async () => {
-    const result = await spectral.run(getTestSpec(["get", "post", "put", "patch", "delete"]));
+    const result = await spectral.then(result => {
+      return (result.run(getTestSpec(["get", "post", "put", "patch", "delete"])));
+    });
     expect(result).toHaveLength(0);
   });
 
   it("ignores paths unde /well-known/", async () => {
-    const result = await spectral.run(getTestSpec(["get"], "/well-known/api/something"));
+    const result = await spectral.then(result => {
+      return (result.run(getTestSpec(["get"], "/well-known/api/something")));
+    });
     expect(result).toHaveLength(0);
   });
 
@@ -26,7 +30,9 @@ describe("http-verbs-should-be-used", () => {
     [["get", "post", "put", "delete"]],
     [["get", "post", "put", "patch"]],
   ])("fails if any of the http verbs is missing", async (responses) => {
-    const result = await spectral.run(getTestSpec(responses));
+    const result = await spectral.then(result => {
+      return (result.run(getTestSpec(responses)));
+    });
     expect(result.length).toBeGreaterThanOrEqual(1);
     expect(result[0].code).toEqual("http-verbs-should-be-used");
   });

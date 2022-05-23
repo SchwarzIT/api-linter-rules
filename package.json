@@ -7,6 +7,7 @@
     "@stoplight/spectral-core": "^1.10.2",
     "@stoplight/spectral-ruleset-migrator": "^1.7.2",
     "@stoplight/spectral-rulesets": "^1.5.2",
+    "@stoplight/spectral-ruleset-bundler": "^1.2.1",
     "@types/jest": "^27.4.0",
     "jest": "^27.4.7",
     "jest-node-exports-resolver": "^1.1.5",

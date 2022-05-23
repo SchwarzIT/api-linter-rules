@@ -1,21 +1,25 @@
 import { Spectral } from "@stoplight/spectral-core";
 import { IRange } from "@stoplight/types/dist/parsers";
-import ruleset from "./path-must-match-api-standards.yml";
+import {setupSpectral} from "../../util/setup-spectral";
 
 describe("path-must-match-api-standards", () => {
-  let spectral: Spectral;
+  let spectral: Promise<Spectral>;
 
   beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+    spectral = setupSpectral("rules/general/path-must-match-api-standards.yml");
   });
 
   it("has a correct path", async () => {
-    const result = await spectral.run(getTestSpec("/api-linting/api/v1/rules"));
+    const result = await spectral.then(result => {
+      return (result.run(getTestSpec("/api-linting/api/v1/rules")));
+    });
     expect(result).toHaveLength(0);
   });
 
   it("fails if the version is missing", async () => {
-    const result = await spectral.run(getTestSpec("/api-linting/api/rules"));
+    const result = await spectral.then(result => {
+      return (result.run(getTestSpec("/api-linting/api/rules")));
+    });
 
     expect(result).toHaveLength(1);
     expect(result[0].code).toEqual("path-must-match-api-standards");
@@ -31,7 +35,9 @@ describe("path-must-match-api-standards", () => {
     "/api/well-known/test",
     "/well-known/api/v2",
   ])("ignores the 'well-known' routes", async (route) => {
-    const result = await spectral.run(getTestSpec(route));
+    const result = await spectral.then(result => {
+      return (result.run(getTestSpec(route)));
+    });
     expect(result).toHaveLength(0);
   });
 

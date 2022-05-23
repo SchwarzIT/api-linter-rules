@@ -2,18 +2,18 @@
 const config = {
   preset: "ts-jest",
   testEnvironment: "node",
-  resolver: "jest-node-exports-resolver", // Needed since @stoplight/spectral-core uses mapped exports which are not supported by jest v27
-  transform: {
-    "\\.(yml|yaml)$": ["<rootDir>/util/transforms/spectralRuleTransformer.js"],
-  },
   extensionsToTreatAsEsm: [".yml", ".yaml", ".ts"],
   globals: {
     "ts-jest": {
       useESM: true,
     },
   },
-  setupFilesAfterEnv: ["<rootDir>/util/jest.setup.ts"],
-  moduleFileExtensions: ["js", "ts", "yml", "yaml"]
+  moduleFileExtensions: ["js", "ts", "yml", "yaml"],
+  moduleNameMapper: {
+    // https://github.com/stoplightio/spectral/issues/2002
+    '^nimma/fallbacks$': '<rootDir>/node_modules/nimma/dist/cjs/fallbacks/index.js',
+    '^nimma/legacy$': '<rootDir>/node_modules/nimma/dist/legacy/cjs/index.js',
+  }
 };
 
 module.exports = config;

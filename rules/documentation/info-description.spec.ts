@@ -1,26 +1,32 @@
 import { Spectral } from "@stoplight/spectral-core";
-import ruleset from "./info-description.yml";
+import {setupSpectral} from "../../util/setup-spectral";
 
 describe("info-description", () => {
-  let spectral: Spectral;
+  let spectral: Promise<Spectral>;
 
   beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+    spectral = setupSpectral("rules/documentation/info-description.yml");
   });
 
   it("has no errors", async () => {
-    const result = await spectral.run(getTestSpec("#".repeat(100)));
+    const result = await spectral.then(result => {
+      return (result.run(getTestSpec("#".repeat(100))));
+    });
     expect(result).toHaveLength(0);
   });
 
   it("fails no description is provided", async () => {
-    const result = await spectral.run(getTestSpec(undefined));
+    const result = await spectral.then(result => {
+      return (result.run(getTestSpec(undefined)));
+    });
     expect(result).toHaveLength(1);
     expect(result[0].code).toEqual("info-description");
   });
 
   it("fails no description is less than 100 characters long", async () => {
-    const result = await spectral.run(getTestSpec("#".repeat(99)));
+    const result = await spectral.then(result => {
+      return (result.run(getTestSpec("#".repeat(99))));
+    });
     expect(result).toHaveLength(1);
     expect(result[0].code).toEqual("info-description");
   });
