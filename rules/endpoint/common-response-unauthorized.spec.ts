@@ -1,17 +1,15 @@
 import { Spectral } from "@stoplight/spectral-core";
-import {setupSpectral} from "../../util/setup-spectral";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("common-responses-unauthorized", () => {
-  let spectral: Promise<Spectral>;
+  let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral("rules/endpoint/common-responses-unauthorized.yml");
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/endpoint/common-responses-unauthorized.yml");
   });
 
   it("has no errors if a 401 response is defined", async () => {
-    const result = await spectral.then(result => {
-      return (result.run(getTestSpec({ 401: 42 })));
-    });
+    const result = await spectral.run(getTestSpec({ 401: 42 }));
     expect(result).toHaveLength(0);
   });
 
@@ -21,9 +19,7 @@ describe("common-responses-unauthorized", () => {
     { 200: "", 201: "" },
     { 400: "", 200: "", 500: "" },
   ])("fails if no 401 response is defined", async (responses) => {
-    const result = await spectral.then(result => {
-      return (result.run(getTestSpec(responses)));
-    });
+    const result = await spectral.run(getTestSpec(responses));
     expect(result).toHaveLength(1);
     expect(result[0].code).toEqual("common-responses-unauthorized");
   });

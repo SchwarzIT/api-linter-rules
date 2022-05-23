@@ -1,18 +1,16 @@
 import { Spectral } from "@stoplight/spectral-core";
-import {setupSpectral} from "../../util/setup-spectral";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("operation-tag-defined", () => {
-  let spectral: Promise<Spectral>;
+  let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral("rules/general/operation-tag-defined.yml");
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/general/operation-tag-defined.yml");
   });
 
   it("does not contain the operation-tag-defined error", async () => {
-      const result = await spectral.then(result => {
-          return (result.run(getTestSpec()));
-      });
-    expect(result.find((issue) => issue.code === "operation-tag-defined")).toBeUndefined()
+    const result = await spectral.run(getTestSpec());
+    expect(result.find((issue) => issue.code === "operation-tag-defined")).toBeUndefined();
   });
 
   const getTestSpec = () =>
