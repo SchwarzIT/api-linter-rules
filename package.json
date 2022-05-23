@@ -16,7 +16,7 @@
     "yaml": "^2.0.0-10"
   },
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "jest",
     "test:watch": "npm run test -- --watch",
     "build": "bash util/scripts/mergeRules.sh",
     "postinstall": "chmod +x util/scripts/*"
