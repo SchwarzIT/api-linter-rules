@@ -1,17 +1,15 @@
 import { Spectral } from "@stoplight/spectral-core";
-import {setupSpectral} from "../../util/setup-spectral";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("no-http-verbs-in-resources", () => {
-  let spectral: Promise<Spectral>;
+  let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral("rules/endpoint/no-http-verbs-in-resources.yml");
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/endpoint/no-http-verbs-in-resources.yml");
   });
 
   it("has no errors if no http verb is used inside the path", async () => {
-    const result = await spectral.then(result => {
-      return (result.run(getTestSpec("/api/test")));
-    });
+    const result = await spectral.run(getTestSpec("/api/test"));
     expect(result).toHaveLength(0);
   });
 
@@ -37,9 +35,7 @@ describe("no-http-verbs-in-resources", () => {
     "/api/delete",
     "/api/delete/test",
   ])("fails if the path %s is used", async (path) => {
-    const result = await spectral.then(result => {
-      return (result.run(getTestSpec(path)));
-    });
+    const result = await spectral.run(getTestSpec(path));
     expect(result).toHaveLength(1);
     expect(result[0].code).toEqual("no-http-verbs-in-resources");
   });

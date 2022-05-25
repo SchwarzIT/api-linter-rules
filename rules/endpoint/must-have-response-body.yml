@@ -13,6 +13,7 @@ rules:
         function: truthy
       - field: description
         function: truthy
+        
   oas2-must-have-response-body:
     description: Every route returning a http status code of 200 or 201 must have a response body defined
     message: "{{description}}; property {{property}} is missing at path: {{path}}"
