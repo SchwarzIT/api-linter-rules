@@ -159,7 +159,7 @@ rules:
     severity: error
     formats:
       - oas2
-    given: $.paths[?(!@property.match(/well-known/ig))].[?(@property === 'get')].responses[200,201]
+    given: $.paths[?(!@property.match(/well-known/ig))].[?(@property === 'get')].responses[200,201,"200","201"]
     then:
       - field: schema
         function: truthy
