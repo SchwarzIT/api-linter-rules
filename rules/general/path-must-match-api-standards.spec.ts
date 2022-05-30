@@ -1,12 +1,12 @@
 import { Spectral } from "@stoplight/spectral-core";
 import { IRange } from "@stoplight/types/dist/parsers";
-import ruleset from "./path-must-match-api-standards.yml";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("path-must-match-api-standards", () => {
   let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/general/path-must-match-api-standards.yml");
   });
 
   it("has a correct path", async () => {
@@ -25,15 +25,13 @@ describe("path-must-match-api-standards", () => {
     });
   });
 
-  it.each<`${string}well-known${string}`>([
-    "/well-known/",
-    "well-known",
-    "/api/well-known/test",
-    "/well-known/api/v2",
-  ])("ignores the 'well-known' routes", async (route) => {
-    const result = await spectral.run(getTestSpec(route));
-    expect(result).toHaveLength(0);
-  });
+  it.each<`${string}well-known${string}`>(["/well-known/", "well-known", "/api/well-known/test", "/well-known/api/v2"])(
+    "ignores the 'well-known' routes",
+    async (route) => {
+      const result = await spectral.run(getTestSpec(route));
+      expect(result).toHaveLength(0);
+    }
+  );
 
   const getTestSpec = (path: string) => `
     {

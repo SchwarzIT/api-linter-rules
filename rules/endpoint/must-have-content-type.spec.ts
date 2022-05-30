@@ -1,11 +1,11 @@
 import { Spectral } from "@stoplight/spectral-core";
-import ruleset from "./must-have-content-type.yml";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("must-have-content-type", () => {
   let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/endpoint/must-have-content-type.yml");
   });
 
   it("has no errors if a valid content-type is defined", async () => {
@@ -20,7 +20,7 @@ describe("must-have-content-type", () => {
   });
 
   it("fails if content-type does not match '/'", async () => {
-    const result = await spectral.run(getTestSpec({"test": true}));
+    const result = await spectral.run(getTestSpec({ test: true }));
     expect(result).toHaveLength(1);
     expect(result[0].code).toEqual("must-have-content-type");
   });

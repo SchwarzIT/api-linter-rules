@@ -5,17 +5,15 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@stoplight/spectral-core": "^1.10.2",
-    "@stoplight/spectral-ruleset-migrator": "^1.7.2",
-    "@stoplight/spectral-rulesets": "^1.5.2",
+    "@stoplight/spectral-ruleset-bundler": "^1.2.1",
     "@types/jest": "^27.4.0",
     "jest": "^27.4.7",
-    "jest-node-exports-resolver": "^1.1.5",
     "ts-jest": "^27.1.3",
     "typescript": "^4.5.5",
     "yaml": "^2.0.0-10"
   },
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "jest",
     "test:watch": "npm run test -- --watch",
     "build": "bash util/scripts/mergeRules.sh",
     "postinstall": "chmod +x util/scripts/*"

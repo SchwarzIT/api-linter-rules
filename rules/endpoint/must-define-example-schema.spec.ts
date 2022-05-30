@@ -1,11 +1,11 @@
 import { Spectral } from "@stoplight/spectral-core";
-import ruleset from "./must-define-example-schema.yml";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("must-define-example-schema", () => {
   let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/endpoint/must-define-example-schema.yml");
   });
 
   it("has no errors if just example is defined", async () => {
@@ -35,24 +35,29 @@ describe("must-define-example-schema", () => {
     expect(result).toHaveLength(0);
   });
 
-  const getTestSpec = (examples: { example?: boolean; examples?: boolean }, path = "/api/some/path"): string => JSON.stringify({
-    paths: {
-      [path]: {
-        post: {
-          responses: {
-            "201": {
-              content: {
-                "application/json": {
-                  ...examples,
+  const getTestSpec = (examples: { example?: boolean; examples?: boolean }, path = "/api/some/path"): string =>
+    JSON.stringify(
+      {
+        paths: {
+          [path]: {
+            post: {
+              responses: {
+                "201": {
+                  content: {
+                    "application/json": {
+                      ...examples,
+                    },
+                  },
+                },
+                "400": {
+                  description: "",
                 },
               },
-            },
-            "400": {
-              description: "",
             },
           },
         },
       },
-    },
-  }, null, 2);
+      null,
+      2
+    );
 });

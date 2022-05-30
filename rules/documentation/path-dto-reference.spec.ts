@@ -1,15 +1,15 @@
 import { Spectral } from "@stoplight/spectral-core";
-import ruleset from "./path-dto-reference.yml";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("path-dto-reference", () => {
   let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/documentation/path-dto-reference.yml");
   });
 
   it("has no errors", async () => {
-    const result = await spectral.run(getTestSpec({"schema": "test"}));
+    const result = await spectral.run(getTestSpec({ schema: "test" }));
     expect(result).toHaveLength(0);
   });
 
@@ -23,7 +23,7 @@ describe("path-dto-reference", () => {
     JSON.stringify(
       {
         components: {
-          schemas
+          schemas,
         },
       },
       null,

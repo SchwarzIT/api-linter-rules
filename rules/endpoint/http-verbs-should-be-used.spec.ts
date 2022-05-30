@@ -1,11 +1,11 @@
 import { Spectral } from "@stoplight/spectral-core";
-import ruleset from "./http-verbs-should-be-used.yml";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("http-verbs-should-be-used", () => {
   let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/endpoint/http-verbs-should-be-used.yml");
   });
 
   it("has no errors all http verbs are used", async () => {

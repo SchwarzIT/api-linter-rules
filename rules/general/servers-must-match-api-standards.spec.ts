@@ -1,11 +1,11 @@
 import { Spectral } from "@stoplight/spectral-core";
-import ruleset from "./servers-must-match-api-standards.yml";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("servers-must-match-api-standards", () => {
   let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/general/servers-must-match-api-standards.yml");
   });
 
   it("has no errors", async () => {

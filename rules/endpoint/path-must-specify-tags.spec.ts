@@ -1,11 +1,11 @@
 import { Spectral } from "@stoplight/spectral-core";
-import ruleset from "./path-must-specify-tags.yml";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("path-must-specify-tags", () => {
   let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/endpoint/path-must-specify-tags.yml");
   });
 
   it("has no errors if tags are provided", async () => {

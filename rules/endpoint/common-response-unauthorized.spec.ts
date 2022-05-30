@@ -1,11 +1,11 @@
 import { Spectral } from "@stoplight/spectral-core";
-import ruleset from "./common-responses-unauthorized.yml";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("common-responses-unauthorized", () => {
   let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/endpoint/common-responses-unauthorized.yml");
   });
 
   it("has no errors if a 401 response is defined", async () => {

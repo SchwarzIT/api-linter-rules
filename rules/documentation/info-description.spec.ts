@@ -1,11 +1,11 @@
 import { Spectral } from "@stoplight/spectral-core";
-import ruleset from "./info-description.yml";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("info-description", () => {
   let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/documentation/info-description.yml");
   });
 
   it("has no errors", async () => {

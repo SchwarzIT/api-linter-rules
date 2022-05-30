@@ -1,11 +1,11 @@
 import { Spectral } from "@stoplight/spectral-core";
-import ruleset from "./path-description-is-mandatory.yml";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("path-description-is-mandatory", () => {
   let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/endpoint/path-description-is-mandatory.yml");
   });
 
   it("has no errors a description is provided", async () => {
@@ -28,8 +28,8 @@ describe("path-description-is-mandatory", () => {
     JSON.stringify({
       paths: {
         [path]: {
-          description: description ? description : undefined
-        }
+          description: description ? description : undefined,
+        },
       },
     });
 });

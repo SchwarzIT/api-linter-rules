@@ -1,11 +1,11 @@
 import { Spectral } from "@stoplight/spectral-core";
-import ruleset from "./no-http-verbs-in-resources.yml";
+import { setupSpectral } from "../../util/setup-spectral";
 
 describe("no-http-verbs-in-resources", () => {
   let spectral: Spectral;
 
-  beforeEach(() => {
-    spectral = setupSpectral(ruleset);
+  beforeEach(async () => {
+    spectral = await setupSpectral("rules/endpoint/no-http-verbs-in-resources.yml");
   });
 
   it("has no errors if no http verb is used inside the path", async () => {
