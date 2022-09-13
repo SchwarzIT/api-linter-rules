@@ -5,7 +5,7 @@ rules:
   path-must-match-api-standards: off # Rule is still under discussion and therefore disabled
   servers-must-match-api-standards: off # Rule is still under discussion and therefore disabled
   common-responses-unauthorized: hint
-  http-verbs-should-be-used: info
+  http-verbs-should-be-used: off
   no-http-verbs-in-resources: info
   path-description-is-mandatory: info
   info-description: info
