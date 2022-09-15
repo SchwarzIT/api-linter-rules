@@ -32,6 +32,7 @@ describe("path-must-specify-tags", () => {
 
   const getTestSpec = (tags?: string[], path = "/api/some/path") =>
     JSON.stringify({
+      openapi: '3.0',
       paths: {
         [path]: {
           post: {
