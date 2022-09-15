@@ -26,6 +26,7 @@ describe("path-description-is-mandatory", () => {
 
   const getTestSpec = (description: boolean, path = "/api/some/path") =>
     JSON.stringify({
+      openapi: '3.0',
       paths: {
         [path]: {
           description: description ? description : undefined,

@@ -5,6 +5,8 @@ rules:
     description: Every route of an API should have a description
     message: "{{description}}; property: {{property}} is missing"
     severity: error
+    formats:
+      - oas3
     given: $.paths[?(!@property.match(/well-known/ig))]
     then:
       - field: description
