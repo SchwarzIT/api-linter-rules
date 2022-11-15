@@ -26,7 +26,10 @@ rules:
   oas2-valid-schema-example: info
   oas2-valid-media-example: info
   oas2-schema: off
+  oas2-api-host: info
+  oas2-api-schemes: info
   oas3-valid-media-example: info
   oas3-valid-schema-example: info
   oas3-schema: off
+  oas3-api-servers: info
   operation-description: off
