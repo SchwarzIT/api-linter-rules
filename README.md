@@ -18,7 +18,6 @@ rules:
   path-must-match-api-standards: warn
   servers-must-match-api-standards: warn
   common-responses-unauthorized: warn
-  http-verbs-should-be-used: warn
   no-http-verbs-in-resources: warn
   description-is-mandatory: warn
 ```
