@@ -5,15 +5,11 @@ rules:
   path-must-match-api-standards: off # Rule is still under discussion and therefore disabled
   servers-must-match-api-standards: off # Rule is still under discussion and therefore disabled
   common-responses-unauthorized: hint
-  http-verbs-should-be-used: info
   no-http-verbs-in-resources: warn
   path-description-is-mandatory: warn
   info-description: warn
   contact-information: warn
-  path-dto-reference: warn
   must-have-path: warn
-  must-have-response-body: warn
-  oas2-must-have-response-body: warn
   must-have-content-type: warn
   must-define-example-schema: warn
   path-must-specify-tags: warn
