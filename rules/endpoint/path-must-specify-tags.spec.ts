@@ -30,6 +30,25 @@ describe("path-must-specify-tags", () => {
     expect(result).toHaveLength(0);
   });
 
+  it('ignores non http verb fields', async () => {
+    const result = await spectral.run(JSON.stringify({
+      openapi: "3.0",
+      paths: {
+        "/test/{param}": {
+          summary: "",
+          description: "",
+          servers: [],
+          parameters: [{
+            name: 'param',
+            in: "path",
+            schema: {type: "string"}
+          }]
+        }
+      }
+    }))
+    expect(result).toHaveLength(0);
+  })
+
   const getTestSpec = (tags?: string[], path = "/api/some/path") =>
     JSON.stringify({
       openapi: '3.0',
