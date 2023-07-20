@@ -1,5 +1,5 @@
 import { Spectral } from "@stoplight/spectral-core";
-import { bundleAndLoadRuleset } from "@stoplight/spectral-ruleset-bundler/dist/loader/node";
+import { bundleAndLoadRuleset } from "@stoplight/spectral-ruleset-bundler/with-loader";
 import path from "path";
 import fs from "fs";
 import { fetch } from "@stoplight/spectral-runtime";
