@@ -10,7 +10,6 @@ rules:
   info-description: info
   contact-information: info
   must-have-path: info
-  must-have-content-type: info
   must-define-example-schema: info
   path-must-specify-tags: info
 

@@ -10,7 +10,6 @@ rules:
   info-description: warn
   contact-information: warn
   must-have-path: warn
-  must-have-content-type: warn
   must-define-example-schema: warn
   path-must-specify-tags: warn
 
