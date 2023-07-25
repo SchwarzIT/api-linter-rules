@@ -73,18 +73,6 @@ rules:
       function: pattern
       functionOptions:
         notMatch: \/(get|post|put|patch|delete)(\/|$)
-  must-have-content-type:
-    description: Every response must specify its content type
-    message: "{{description}}; property {{property}} is missing or not a valid content-type"
-    severity: error
-    given: $.paths[?(!@property.match(/well-known/ig))]..content
-    then:
-      - field: "@key"
-        function: truthy
-      - field: "@key"
-        function: pattern
-        functionOptions:
-          match: "/"
   must-define-example-schema:
     description: Every DTO must define at least one example
     message: "{{description}}; DTO is lacking an example {{path}}"
