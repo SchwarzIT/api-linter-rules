@@ -5,7 +5,7 @@ rules:
     description: Every DTO must define at least one example
     message: "{{description}}; DTO is lacking an example {{path}}"
     severity: error
-    given: $.paths[?(!@property.match(/well-known/ig))]..content.*
+    given: $.components.schemas.*
     then:
       - function: xor
         functionOptions:

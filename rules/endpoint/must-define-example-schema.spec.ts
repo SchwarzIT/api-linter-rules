@@ -30,31 +30,15 @@ describe("must-define-example-schema", () => {
     expect(result[0].code).toEqual("must-define-example-schema");
   });
 
-  it("ignores paths unde /well-known/", async () => {
-    const result = await spectral.run(getTestSpec({ example: true }, "/well-known/api/something"));
-    expect(result).toHaveLength(0);
-  });
-
-  const getTestSpec = (examples: { example?: boolean; examples?: boolean }, path = "/api/some/path"): string =>
+  const getTestSpec = (examples: { example?: boolean; examples?: boolean }): string =>
     JSON.stringify(
       {
-        paths: {
-          [path]: {
-            post: {
-              responses: {
-                "201": {
-                  content: {
-                    "application/json": {
-                      ...examples,
-                    },
-                  },
-                },
-                "400": {
-                  description: "",
-                },
-              },
-            },
-          },
+        components: {
+          schemas: {
+            ExampleDTO: {
+              ...examples
+            }
+          }
         },
       },
       null,
