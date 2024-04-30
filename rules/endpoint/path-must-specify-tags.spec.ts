@@ -69,21 +69,6 @@ describe("path-must-specify-tags", () => {
 const getComponentTestSpec = (tags?: string[], path = "/api/some/path") =>
   JSON.stringify({
     "openapi": "3.0.2",
-    "info": {
-      "title": "Sometest",
-      "version": "0.1",
-      "description": "This example shows that options will give a false positive in the schema ShowMe an false positive warning",
-      "contact": {
-        "email": "lucas@maciuga.de",
-        "name": "Lucas Maciuga",
-        "url": "https://have.none"
-      }
-    },
-    "servers": [
-      {
-        "url": "https://test.api.schwarz"
-      }
-    ],
     "tags": [
       {
         "name": "SomeTag",
@@ -98,37 +83,11 @@ const getComponentTestSpec = (tags?: string[], path = "/api/some/path") =>
           "tags": [
             "SomeTag"
           ],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ShowMe"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            }
-          }
         }
       }
     },
     "components": {
       "schemas": {
-        "Option": {
-          "type": "object",
-          "properties": {
-            "field1": {
-              "type": "string"
-            }
-          },
-          "example": {
-            "field1": "val1"
-          }
-        },
         "ShowMe": {
           "type": "object",
           "properties": {
@@ -142,34 +101,10 @@ const getComponentTestSpec = (tags?: string[], path = "/api/some/path") =>
                   "type": "boolean"
                 },
                 "options": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Option"
-                  },
+                  "type": "string",
                   "nullable": true
                 }
               }
-            }
-          },
-          "example": {
-            "input": {
-              "options": [
-                {
-                  "field1": "val1"
-                },
-                {
-                  "field1": "val2"
-                },
-                {
-                  "field1": "val3"
-                },
-                {
-                  "field1": "val4"
-                },
-                {
-                  "field1": "val5"
-                }
-              ]
             }
           }
         }
