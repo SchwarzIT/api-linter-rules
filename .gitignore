@@ -1,7 +1,6 @@
 .vscode
 demo*
 node_modules
-pnpm-lock.yaml
 wiki
 .npmrc
 
