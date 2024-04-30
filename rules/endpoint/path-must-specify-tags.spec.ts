@@ -25,6 +25,11 @@ describe("path-must-specify-tags", () => {
     expect(result[0].code).toEqual("path-must-specify-tags");
   });
 
+  it("do not fail if the keywords for http methods are used in components", async () => {
+    const result = await spectral.run(getComponentTestSpec());
+    expect(result).toHaveLength(0);
+  });
+
   it("ignores paths under the well-known route", async () => {
     const result = await spectral.run(getTestSpec(undefined, "/well-known/health"));
     expect(result).toHaveLength(0);
@@ -60,4 +65,50 @@ describe("path-must-specify-tags", () => {
         },
       },
     });
+
+const getComponentTestSpec = (tags?: string[], path = "/api/some/path") =>
+  JSON.stringify({
+    "openapi": "3.0.2",
+    "tags": [
+      {
+        "name": "SomeTag",
+        "description": "some description"
+      }
+    ],
+    "paths": {
+      "/twin/api/v1/somethings": {
+        "get": {
+          "operationId": "GetSomething",
+          "description": "hi test",
+          "tags": [
+            "SomeTag"
+          ],
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "ShowMe": {
+          "type": "object",
+          "properties": {
+            "input": {
+              "type": "object",
+              "properties": {
+                "get": {
+                  "type": "string"
+                },
+                "delete": {
+                  "type": "boolean"
+                },
+                "options": {
+                  "type": "string",
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  });
 });
