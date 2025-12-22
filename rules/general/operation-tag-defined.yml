@@ -1,6 +1,0 @@
-# The Rule "operation-tag-defined" from the spectral:oas recommended ruleset was disabled
-
-extends:
-  - ["spectral:oas", recommended]
-rules:
-  operation-tag-defined: off
