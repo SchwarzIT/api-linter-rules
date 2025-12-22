@@ -1,0 +1,29 @@
+{
+  "name": "api-linter-rules",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "[![SIT](https://img.shields.io/badge/SIT-awesome-blueviolet.svg)](https://jobs.schwarz)",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vite": "^7.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SchwarzIT/api-linter-rules.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SchwarzIT/api-linter-rules/issues"
+  },
+  "homepage": "https://github.com/SchwarzIT/api-linter-rules#readme",
+  "packageManager": "pnpm@10.26.1+sha512.664074abc367d2c9324fdc18037097ce0a8f126034160f709928e9e9f95d98714347044e5c3164d65bd5da6c59c6be362b107546292a8eecb7999196e5ce58fa",
+  "dependencies": {
+    "@stoplight/spectral-formats": "^1.8.2",
+    "@stoplight/spectral-functions": "^1.10.1"
+  }
+}
