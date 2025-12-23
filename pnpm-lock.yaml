@@ -31,6 +31,8 @@ importers:
         specifier: ^4.0.16
         version: 4.0.16(@types/node@25.0.3)
 
+  packages/asyncapi: {}
+
   packages/openapi: {}
 
 packages:
