@@ -7,5 +7,13 @@ export default defineConfig({
       fileName: 'openapi',
       formats: ['es'],
     },
+    rollupOptions: {
+      // The default spectral functions and rulesets need to be externalized and will be provided by the spectral CLI during execution
+      external: [
+        '@stoplight/spectral-core',
+        '@stoplight/spectral-functions',
+        '@stoplight/spectral-rulesets',
+      ],
+    },
   },
 });
