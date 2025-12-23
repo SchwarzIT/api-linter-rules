@@ -1,0 +1,17 @@
+{
+  "name": "asyncapi-linter-rules",
+  "version": "0.0.0",
+  "private": true,
+  "main": "dist/asyncapi.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./dist/asyncapi.js"
+    }
+  },
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "tsc && vite build",
+    "test": "vitest"
+  }
+}
