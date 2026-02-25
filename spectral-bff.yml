@@ -1,5 +1,5 @@
 extends:
-  - https://raw.githubusercontent.com/SchwarzIT/api-linter-rules/main/spectral.yml
+  - https://github.com/SchwarzIT/api-linter-rules/releases/download/latest/openapi.js
 rules:
   tag-description: info # Rule enabled from spectral openapi ruleset
   operation-tag-defined: off
