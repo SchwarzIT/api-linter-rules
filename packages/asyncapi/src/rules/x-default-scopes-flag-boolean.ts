@@ -1,11 +1,11 @@
-import type { RuleDefinition } from '@stoplight/spectral-core';
-import { enumeration } from '@stoplight/spectral-functions';
+import type { RuleDefinition } from "@stoplight/spectral-core";
+import { enumeration } from "@stoplight/spectral-functions";
 
 export const xDefaultScopesFlagBoolean: RuleDefinition = {
-  severity: 'error',
-  given: '$',
+  severity: "error",
+  given: "$",
   then: {
-    field: 'x-default-scopes',
+    field: "x-default-scopes",
     function: enumeration,
     functionOptions: {
       values: [false, true],

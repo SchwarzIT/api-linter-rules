@@ -36,11 +36,11 @@ export const publishValidation = (input: any) => {
           ];
         }
       } else {
-          return [
-            {
-              message: `Wrong pattern for channel ${key}. Should be <domain>/t/<division>/<messagingapp>`,
-            },
-          ];
+        return [
+          {
+            message: `Wrong pattern for channel ${key}. Should be <domain>/t/<division>/<messagingapp>`,
+          },
+        ];
       }
     }
   }
