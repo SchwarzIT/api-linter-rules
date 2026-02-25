@@ -1,12 +1,12 @@
-import type { RuleDefinition } from '@stoplight/spectral-core';
-import { enumeration } from '@stoplight/spectral-functions';
+import type { RuleDefinition } from "@stoplight/spectral-core";
+import { enumeration } from "@stoplight/spectral-functions";
 
 export const publicFlagBoolean: RuleDefinition = {
-  severity: 'error',
-  given: '$',
+  severity: "error",
+  given: "$",
   then: [
     {
-      field: 'x-public-asyncapi',
+      field: "x-public-asyncapi",
       function: enumeration,
       functionOptions: { values: [true, false] },
     },

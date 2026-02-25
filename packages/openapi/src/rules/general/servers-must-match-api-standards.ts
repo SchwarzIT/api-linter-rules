@@ -1,16 +1,17 @@
-import type { RuleDefinition } from '@stoplight/spectral-core';
-import { pattern } from '@stoplight/spectral-functions';
+import type { RuleDefinition } from "@stoplight/spectral-core";
+import { pattern } from "@stoplight/spectral-functions";
 
 export const serversMustMatchApiStandards: RuleDefinition = {
-  description: 'Schema and host in URL must match company API standards',
-  message: '{{description}}; {{property}}:{{value}} incorrect. Example: https://live.api.schwarz/digital-twin/api/v1/products',
-  severity: 'error',
+  description: "Schema and host in URL must match company API standards",
+  message:
+    "{{description}}; {{property}}:{{value}} incorrect. Example: https://live.api.schwarz/digital-twin/api/v1/products",
+  severity: "error",
   resolved: false,
-  given: '$.servers..url',
+  given: "$.servers..url",
   then: {
     function: pattern,
     functionOptions: {
-      match: '^((http[s]?):\/\/)([a-z]+)([.+])api.schwarz',
+      match: "^((http[s]?):\/\/)([a-z]+)([.+])api.schwarz",
     },
   },
 };
