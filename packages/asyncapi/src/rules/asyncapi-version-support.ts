@@ -1,17 +1,17 @@
-import type { RuleDefinition } from '@stoplight/spectral-core';
-import { truthy, enumeration } from '@stoplight/spectral-functions';
+import type { RuleDefinition } from "@stoplight/spectral-core";
+import { truthy, enumeration } from "@stoplight/spectral-functions";
 
 export const asyncapiVersionSupport: RuleDefinition = {
-  description: 'Supported AsyncAPI versions: 2.5.0, 2.6.0',
-  severity: 'error',
-  given: '$',
+  description: "Supported AsyncAPI versions: 2.5.0, 2.6.0",
+  severity: "error",
+  given: "$",
   then: [
-    { field: 'asyncapi', function: truthy },
+    { field: "asyncapi", function: truthy },
     {
-      field: 'asyncapi',
+      field: "asyncapi",
       function: enumeration,
       functionOptions: {
-        values: ['2.5.0', '2.6.0'],
+        values: ["2.5.0", "2.6.0"],
       },
     },
   ],

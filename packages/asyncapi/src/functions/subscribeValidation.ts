@@ -1,30 +1,30 @@
 const REGEXP_PATTERN =
-  '^(?<domain>[a-z0-9_-]+)/(?<type>t)/(?<division>([a-z]{3})|({[a-z]+}))/(?<app>[a-z0-9_-]+).*$';
+  "^(?<domain>[a-z0-9_-]+)/(?<type>t)/(?<division>([a-z]{3})|({[a-z]+}))/(?<app>[a-z0-9_-]+).*$";
 
 export const subscribeValidation = (input: any) => {
-  for (const [key, value] of Object.entries(input['channels'] as any)) {
-    if ('subscribe' in (value as any)) {
+  for (const [key, value] of Object.entries(input["channels"] as any)) {
+    if ("subscribe" in (value as any)) {
       let match = key.match(REGEXP_PATTERN);
 
       if (match && match.groups) {
         const groups = match.groups;
         //Domain
-        if (groups.domain != input.info['x-application-domain']) {
+        if (groups.domain != input.info["x-application-domain"]) {
           return [
             {
-              message: `subscribe access not allowed for ${key}. domain: ${groups.domain} must match ${input.info['x-application-domain']}`,
+              message: `subscribe access not allowed for ${key}. domain: ${groups.domain} must match ${input.info["x-application-domain"]}`,
             },
           ];
         }
         //Messaging App
-        if (groups.app != input.info['x-messaging-application']) {
+        if (groups.app != input.info["x-messaging-application"]) {
           return [
             {
-              message: `subscribe access not allowed for ${key}. app: ${groups.app} must match ${input.info['x-messaging-application']}`,
+              message: `subscribe access not allowed for ${key}. app: ${groups.app} must match ${input.info["x-messaging-application"]}`,
             },
           ];
         }
-        if (groups.type != 't' && groups.type != 'q') {
+        if (groups.type != "t" && groups.type != "q") {
           return [
             {
               message: `subscribe access wrong name for ${key}.`,

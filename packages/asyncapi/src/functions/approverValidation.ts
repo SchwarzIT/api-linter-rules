@@ -1,10 +1,10 @@
-import type { RulesetFunction } from '@stoplight/spectral-core';
+import type { RulesetFunction } from "@stoplight/spectral-core";
 
 const MAIL_REGEX =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export const approverValidation: RulesetFunction<string | string[]> = (
-  input
+  input,
 ) => {
   if (Array.isArray(input)) {
     for (const mail of input) {
