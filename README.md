@@ -13,11 +13,7 @@ extends:
   - https://raw.githubusercontent.com/SchwarzIT/api-linter-rules/main/spectral.yml
 rules:
   operation-tag-defined: off
-  path-must-match-api-standards: warn
-  servers-must-match-api-standards: warn
   common-responses-unauthorized: warn
-  no-http-verbs-in-resources: warn
-  description-is-mandatory: warn
 ```
 
 ---
