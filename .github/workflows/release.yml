@@ -1,9 +1,13 @@
-name: Update Test Release
+# This workflow is responsible for publishing the openapi and asyncapi rulesets.
+# It will build the rulesets as individual js files and add them to the "latest" release in github.
+# This way it's possible to consume the rulesets using a URL without the need for npm or unpkg e.g.: https://github.com/SchwarzIT/api-linter-rules/releases/download/latest/openapi.js
+
+name: Update Latest Release
 
 on:
   push:
     branches:
-      - migrate-to-js-rulesets
+      - main
 
 jobs:
   build-and-release:
@@ -33,9 +37,9 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Update assets of "test" release
+      - name: Update assets of "latest" release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release upload test packages/openapi/dist/openapi.js --clobber
-          gh release upload test packages/asyncapi/dist/asyncapi.js --clobber
+          gh release upload latest packages/openapi/dist/openapi.js --clobber
+          gh release upload latest packages/asyncapi/dist/asyncapi.js --clobber
