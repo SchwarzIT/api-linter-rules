@@ -1,0 +1,11 @@
+functionsDir: ./functions
+functions: [backward-compatibility]
+rules:
+  backward-compatibility:
+    description: Check for backward compatibility with the previous version in git.
+    message: "{{error}}"
+    severity: error
+    resolved: false
+    given: $
+    then:
+      function: backward-compatibility
