@@ -86,3 +86,12 @@ E.g. to lint a file called `openapi.json` using the "API" ruleset run:
 ```bash
 spectral lint -r https://raw.githubusercontent.com/SchwarzIT/api-linter-rules/main/spectral-api.yml openapi.json
 ```
+
+## Getting started
+
+To work on this repo follow these steps:
+
+1. Make sure you have [Node.js](https://nodejs.org/en/download) installed with the version matching the one inside `.node-version` (using a tool like e.g. [fnm](https://github.com/Schniz/fnm) will ensure this automatically)
+2. Make sure you have [pnpm](https://pnpm.io/) installed in the version specified inside `package.json` (this can be automated as well using [corepack](https://github.com/nodejs/corepack))
+3. Clone the repository: `git clone https://github.com/SchwarzIT/api-linter-rules.git`
+4. Install the dependencies: `pnpm install`
