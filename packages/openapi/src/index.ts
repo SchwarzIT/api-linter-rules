@@ -2,6 +2,7 @@ import { oas3 } from "@stoplight/spectral-formats";
 import { infoDescription } from "./rules/documentation/info-description";
 import { contactInformation } from "./rules/documentation/contact-information";
 import { commonResponsesUnauthorized } from "./rules/endpoint/common-responses-unauthorized";
+import { commonErrorsRfc9457 } from "./rules/endpoint/common-errors/common-errors-rfc9457";
 import { mustDefineExampleSchema } from "./rules/endpoint/must-define-example-schema";
 import { noHttpVerbsInResources } from "./rules/endpoint/no-http-verbs-in-resources";
 import { pathMustSpecifyTags } from "./rules/endpoint/path-must-specify-tags";
@@ -15,6 +16,7 @@ const ruleset = {
     "info-description": infoDescription,
     "contact-information": contactInformation,
     "common-responses-unauthorized": commonResponsesUnauthorized,
+    "common-errors-rfc9457": commonErrorsRfc9457,
     "must-define-example-schema": mustDefineExampleSchema,
     "no-http-verbs-in-resources": noHttpVerbsInResources,
     "path-must-specify-tags": pathMustSpecifyTags,

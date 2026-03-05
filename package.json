@@ -7,7 +7,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "pnpm run -r build",
-    "test": "pnpm run -r test --run",
+    "test": "pnpm run -r test",
     "lint": "pnpm prettier --check .",
     "format": "pnpm prettier --write ."
   },
