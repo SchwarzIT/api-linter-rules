@@ -31,16 +31,20 @@ Tests are located in the `wasm/test` directory and can be run via `pnpm run test
 ## Lessons Learned
 
 ### 1. Wizer Initialization and `Math.random`
+
 During `jco componentize`, the code is pre-evaluated using Wizer. Many JavaScript libraries (or their dependencies like `brace-expansion`) call `Math.random()` at the top level for initialization. This triggers a call to `wasi:random`, which Wizer forbids during the pre-evaluation phase.
 **Solution**: A `pre-init.ts` script was created to mock `Math.random` and `process` at the very beginning of the bundle, allowing the component to initialize without trapping.
 
 ### 2. Asynchronous Results (`future`)
+
 While WIT supports `future<list<...>>` for asynchronous results, the current version of `jco` / `componentize-js` may panic during componentization when using this keyword.
 **Solution**: Use a synchronous return type in WIT. `componentize-js` automatically handles `async` TypeScript functions by waiting for the promise before returning to the host, effectively providing a synchronous-looking interface from the WASM side.
 
 ### 3. Module Resolution in WASM
+
 Top-level imports of Node.js modules like `node:fs` can cause `ReferenceError` during componentization because the environment doesn't have them yet.
 **Solution**: Use dynamic `import()` within functions that need these modules, or externalize them correctly in the bundler configuration.
 
 ### 4. OCI WASM Images
+
 Building OCI images `FROM scratch` containing only the WASM binary is possible and follows the RedHat/Podman standards for WASM workloads. However, running these images requires the host to have a correctly configured WASM runtime (like `crun` with `wasmedge` or `wasmtime` shims).
