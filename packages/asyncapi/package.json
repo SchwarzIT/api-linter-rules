@@ -12,6 +12,6 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "tsc && vite build",
-    "test": "vitest --passWithNoTests"
+    "test": "vitest run --passWithNoTests"
   }
 }
