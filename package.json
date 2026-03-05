@@ -7,7 +7,9 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "pnpm run -r build",
+    "build:wasm": "pnpm run build && vite build -c wasm/vite.config.ts && mkdir -p wasm/dist && mv dist/spectral-lint.js wasm/dist/ && jco componentize wasm/dist/spectral-lint.js --wit wasm/wit/spectral-linter.wit -n spectral-linter -o wasm/dist/spectral.wasm --disable all --enable random --enable clocks --enable stdio",
     "test": "pnpm run -r test --run",
+    "test:wasm": "pnpm run build:wasm && vitest wasm/test/ --run",
     "lint": "pnpm prettier --check .",
     "format": "pnpm prettier --write ."
   },
@@ -17,8 +19,12 @@
     "@stoplight/spectral-rulesets": "1.22.0"
   },
   "devDependencies": {
+    "@bytecodealliance/componentize-js": "^0.19.3",
+    "@bytecodealliance/jco": "^1.17.0",
+    "@bytecodealliance/preview2-shim": "^0.17.8",
     "@stoplight/spectral-core": "1.21.0",
     "prettier": "3.8.1",
+    "testcontainers": "^11.12.0",
     "typescript": "5.9.3",
     "vite": "7.3.1",
     "vitest": "^4.0.16"

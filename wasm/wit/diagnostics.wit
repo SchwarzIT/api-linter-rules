@@ -1,0 +1,34 @@
+package schwarz:api;
+
+interface diagnostics {
+    use types.{range, location, json-path};
+
+    enum diagnostic-severity {
+        error,
+        warning,
+        information,
+        hint,
+    }
+
+    record diagnostic-related-information {
+        location: location,
+        message: string,
+    }
+
+    variant code {
+        s(string),
+        n(s32),
+    }
+
+    record spectral-diagnostic {
+        range: range,
+        message: string,
+        severity: diagnostic-severity,
+        source: option<string>,
+        path: json-path,
+        code: code,
+        tags: option<list<string>>,
+        related-information: option<list<diagnostic-related-information>>,
+        documentation-url: option<string>,
+    }
+}

@@ -86,3 +86,27 @@ E.g. to lint a file called `openapi.json` using the "API" ruleset run:
 ```bash
 spectral lint -r https://raw.githubusercontent.com/SchwarzIT/api-linter-rules/main/spectral-api.yml openapi.json
 ```
+
+## WebAssembly (WASM) Linter
+
+This project also provides a WebAssembly component for linting, targeting the WebAssembly Component Model.
+
+### Build
+
+To build the WASM component, run:
+
+```bash
+pnpm run build:wasm
+```
+
+This will build the native packages and generate `wasm/dist/spectral.wasm`.
+
+### Test
+
+To run the WASM-specific tests (including local wasmtime verification):
+
+```bash
+pnpm run test:wasm
+```
+
+For more details on the WASM architecture and implementation, see [wasm/GEMINI.md](./wasm/GEMINI.md).

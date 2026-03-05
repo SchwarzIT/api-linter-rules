@@ -1,0 +1,58 @@
+package schwarz:api;
+
+interface types {
+    record position {
+        line: u32, character: u32,
+    }
+
+    record range {
+        start: position, end: position,
+    }
+
+    record location {
+        uri: option<string>, range: range,
+    }
+
+    variant segment {
+        s(string), n(s32),
+    }
+
+    type json-path = list<segment>;
+}
+
+interface diagnostics {
+    use types.{range, location, json-path};
+
+    enum diagnostic-severity {
+        error, warning, information, hint,
+    }
+
+    record diagnostic-related-information {
+        location: location, message: string,
+    }
+
+    variant code {
+        s(string), n(s32),
+    }
+
+    record spectral-diagnostic {
+        range: range,
+        message: string,
+        severity: diagnostic-severity,
+        source: option<string>,
+        path: json-path,
+        code: code,
+        tags: option<list<string>>,
+        related-information: option<list<diagnostic-related-information>>,
+        documentation-url: option<string>,
+    }
+}
+
+world spectral-linter {
+    import types;
+    import diagnostics;
+
+    use diagnostics.{spectral-diagnostic};
+
+    export lint: func(spec: string) -> list<spectral-diagnostic>;
+}
