@@ -1,0 +1,11 @@
+package schwarz:api;
+
+world spectral-linter {
+    import types;
+    import diagnostics;
+
+    use diagnostics.{spectral-diagnostic};
+
+    // The component exports a 'lint' function that takes a string and returns a promise of diagnostics
+    export lint: func(spec: string) -> future<list<spectral-diagnostic>>;
+}

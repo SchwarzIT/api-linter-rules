@@ -1,0 +1,25 @@
+package schwarz:api;
+
+interface types {
+    record position {
+        line: u32,
+        character: u32,
+    }
+
+    record range {
+        start: position,
+        end: position,
+    }
+
+    record location {
+        uri: option<string>,
+        range: range,
+    }
+
+    variant segment {
+        s(string),
+        n(s32),
+    }
+
+    type json-path = list<segment>;
+}
