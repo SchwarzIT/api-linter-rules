@@ -26,7 +26,11 @@ describe("common-errors-rfc9457", () => {
                       properties: {
                         detail: { type: "string", maxLength: 4096 },
                         title: { type: "string", maxLength: 1024 },
-                        type: { type: "string", format: "uri", maxLength: 1024 },
+                        type: {
+                          type: "string",
+                          format: "uri",
+                          maxLength: 1024,
+                        },
                         status: {
                           type: "integer",
                           format: "int32",
